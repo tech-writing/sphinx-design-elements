@@ -66,6 +66,13 @@ get_started
 ```
 
 ```{toctree}
+:caption: Directives
+:hidden:
+
+gridtable
+```
+
+```{toctree}
 :caption: Development
 :hidden:
 
@@ -79,7 +86,11 @@ sandbox
 :margin: 4 4 0 0
 :gutter: 1
 
-:::{grid-item-card} {octicon}`table` Placeholder
+:::{grid-item-card} {octicon}`table` Grid table
+:link: gridtable
+:link-type: doc
+
+HTML table based on a grid layout, with ergonomic top-down configuration.
 :::
 
 ::::

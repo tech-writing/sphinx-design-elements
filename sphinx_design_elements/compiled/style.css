@@ -1,0 +1,21 @@
+/* Grid table */
+
+/* Beautiful light-weight table outline flavor. */
+.top-border {
+  border-top-width: thin;
+  border-top-style: solid;
+  border-top-color: lightgray;
+}
+.bottom-border {
+  border-bottom-width: thin;
+  border-bottom-style: solid;
+  border-top-color: lightgray;
+}
+
+/* Remove margins of child elements inside table items. */
+.sd-col > .highlight-markdown {
+  margin: unset;
+}
+.sd-col > .highlight-restructuredtext {
+  margin: unset;
+}
