@@ -1,0 +1,14 @@
+<document source="index">
+    <section ids="heading" names="heading">
+        <title>
+            Heading
+        <paragraph>
+            <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
+                foo, bar
+            
+            <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
+                foo
+            <inline>
+                 
+            <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
+                bar

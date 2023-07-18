@@ -19,3 +19,12 @@
 .sd-col > .highlight-restructuredtext {
   margin: unset;
 }
+
+
+/* Info card */
+
+/* Fix grid item formatting. */
+.sd-col > div.line-block {
+  margin-top: unset;
+  margin-bottom: unset;
+}
