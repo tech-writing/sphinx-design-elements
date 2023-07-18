@@ -62,6 +62,8 @@ myst_enable_extensions = [
 Head over to the "directives" and "roles" sections to learn about the web elements
 provided by this collection, and how to use them in your documentation markup.
 
+- [](#gridtable-directive)
+
 Both [reStructuredText] and [Markedly Structured Text] syntax are supported equally well.
 
 ## Outlook

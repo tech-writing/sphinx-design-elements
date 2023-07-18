@@ -8,6 +8,7 @@ from sphinx.environment import BuildEnvironment
 from sphinx_design.extension import depart_container, visit_container
 
 from . import compiled as static_module
+from .gridtable import setup_gridtable
 
 
 def setup_extension(app: Sphinx) -> None:
@@ -18,6 +19,8 @@ def setup_extension(app: Sphinx) -> None:
     # we override container html visitors, to stop the default behaviour
     # of adding the `container` class to all nodes.container
     app.add_node(nodes.container, override=True, html=(visit_container, depart_container))
+
+    setup_gridtable(app)
 
 
 def update_css_js(app: Sphinx):
