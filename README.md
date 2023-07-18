@@ -1,7 +1,3 @@
----
-sd_hide_title2: true
----
-
 # sphinx-design-elements
 
 » [Documentation]
@@ -12,8 +8,8 @@ sd_hide_title2: true
 | [License]
 
 [![CI][gha-badge]][gha-link]
-| [![Coverage Status][codecov-badge]][codecov-link]
-| [![PyPI][pypi-badge]][pypi-link]
+[![Coverage Status][codecov-badge]][codecov-link]
+[![PyPI][pypi-badge]][pypi-link]
 
 
 ## About
