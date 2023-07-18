@@ -38,6 +38,9 @@ high-level elements on top.
 
 ## Development
 
+In order to set up the project in development mode, visit the [](#development)
+documentation.
+
 
 
 [Changelog]: https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md
