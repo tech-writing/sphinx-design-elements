@@ -70,6 +70,14 @@ get_started
 :hidden:
 
 gridtable
+infocard
+```
+
+```{toctree}
+:caption: Roles
+:hidden:
+
+tag
 ```
 
 ```{toctree}
@@ -91,6 +99,20 @@ sandbox
 :link-type: doc
 
 HTML table based on a grid layout, with ergonomic top-down configuration.
+:::
+
+:::{grid-item-card} {octicon}`note` Info card
+:link: infocard
+:link-type: doc
+
+Composite info card container element, to be used as a grid item.
+:::
+
+:::{grid-item-card} {octicon}`plus-circle` Special badges
+:link: tag
+:link-type: doc
+
+Special {bdg-primary}`badges` and other components.
 :::
 
 ::::
