@@ -2,7 +2,9 @@
 sd_hide_title: true
 ---
 
-# sphinx-design
+(index)=
+
+# sphinx-design-elements
 
 ::::::{div} landing-title
 :style: "padding: 0.6rem 0.1rem 0.1rem 0; background-image: linear-gradient(315deg, #992d3b 0%, #303545 84%); clip-path: polygon(0px 0px, 100% 0%, 100% calc(100% - 1.5rem), 0% 100%); -webkit-clip-path: polygon(0px 0px, 100% 0%, 100% calc(100% - 1.5rem), 0% 100%);"
