@@ -66,6 +66,46 @@ badges](inv:sd#badges) with a special appearance.
 ````
 
 
+## More examples
+
+:::::{info-card}
+
+::::{grid-item}
+:columns: 8
+:class: sd-align-major-spaced
+#### Curated picture of the day
+
+A mountain goat with long horns standing on a grassy hill.
+
+:::{div} text-small
+**Author:** Jaromír Kalina, [@jkalinaofficial](https://unsplash.com/@jkalinaofficial) \
+**Contact:** Czech Republic, <https://jkalina.carrd.co/> \
+**Exposé:** https://unsplash.com/photos/spdQ1dVuIHw \
+**Source:** [Unsplash -- The internet’s source for visuals](https://unsplash.com/)
+:::
+::::
+
+::::{grid-item}
+:columns: 4
+
+[![](https://unsplash.com/photos/spdQ1dVuIHw/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNjg5Nzg4MTEzfA&force=true&w=640)](https://unsplash.com/photos/spdQ1dVuIHw)
+::::
+
+:::::
+
+:::{note}
+Did you ever ask yourself how to [align items in a flex container], and how to control
+all those details within Sphinx documentation markup? The documentation about
+[using sphinx{design} CSS classes to align flexbox items] has all the answers.
+In this case, the items within the left content column are aligned "spaced", to fill the
+full major axis, using the `sd-align-major-spaced` CSS class.
+:::
+
+
 ---
 
 _This page is written in Markedly Structured Text (MyST Markdown)._
+
+
+[align items in a flex container]: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout/Aligning_items_in_a_flex_container
+[using sphinx{design} CSS classes to align flexbox items]: https://sphinx-design.readthedocs.io/en/latest/css_classes.html#display

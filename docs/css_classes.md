@@ -32,4 +32,41 @@ Larger text.
 :::
 
 
+## Table styling
+
+The `.{top,bottom}-border` CSS classes adjust the `border-{top,bottom}-{width,style,color}`
+CSS attributes. They are meant to be applied to rows in a [](gridtable-directive) by using
+its `:row-class:` directive option.
+
+:::::{card}
+::::{sd-table}
+:widths: 3 9
+:row-class: top-border
+
+:::{sd-row}
+```{sd-item} **What**
+```
+```{sd-item} **Description**
+```
+:::
+:::{sd-row}
+```{sd-item} Fox
+```
+```{sd-item}
+The quick brown fox jumps
+over the lazy dog.
+```
+:::
+:::{sd-row}
+```{sd-item} Franz
+```
+```{sd-item}
+Franz jagt im komplett verwahrlosten
+Taxi quer durch Bayern.
+```
+:::
+
+::::
+:::::
+
 [`compiled/style.css`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/compiled/style.css
