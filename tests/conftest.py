@@ -12,6 +12,12 @@ pytest_plugins = "sphinx.testing.fixtures"
 
 
 class SphinxBuilder:
+    """
+    Sphinx builder fixture implementation for pytest.
+
+    TODO: Currently copied from `sphinx-design`. Maybe import from there instead?
+    """
+
     def __init__(self, app: SphinxTestApp, src_path: Path):
         self.app = app
         self._src_path = src_path
@@ -59,6 +65,12 @@ class SphinxBuilder:
 
 @pytest.fixture()
 def sphinx_builder(tmp_path: Path, make_app, monkeypatch):
+    """
+    Sphinx builder fixture entrypoint for pytest.
+
+    TODO: Currently copied from `sphinx-design`. Maybe import from there instead?
+    """
+
     def _create_project(buildername: str = "html", conf_kwargs: Optional[Dict[str, Any]] = None):
         src_path = tmp_path / "srcdir"
         src_path.mkdir()

@@ -29,6 +29,8 @@ elsewhere.
 
 Basic table, two columns, no formatting.
 
+:::::{div} sd-shadow-md
+
 ::::{sd-table}
 :widths: 3 9
 
@@ -57,6 +59,7 @@ Taxi quer durch Bayern.
 :::
 
 ::::
+:::::
 
 
 ## Usage
