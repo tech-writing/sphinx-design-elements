@@ -6,44 +6,44 @@
             <container classes="sd-row sd-m-0 sd-p-0" design_component="grid-row" is_div="True">
                 <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm" design_component="card" is_div="True">
                     <container classes="sd-card-body" design_component="card-body" is_div="True">
-                    <container classes="sd-container-fluid sd-sphinx-override sd-m-0 sd-p-0" design_component="grid-container" is_div="True">
-                        <container classes="sd-row sd-m-0 sd-p-0" design_component="grid-row" is_div="True">
-                            <container classes="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8" design_component="grid-item" is_div="True">
-                                <paragraph>
-                                    <reference name="example.org/beagles" refuri="https://example.org/beagles">
-                                        example.org/beagles
-                                    <target ids="example-org-beagles" names="example.org/beagles" refuri="https://example.org/beagles">
-                                <line_block>
-                                    <line>
-                                        A module for collecting votes from beagles,
-                                    <line>
-                                        and for consolidating them.
-                                <line_block>
-                                    <line>
-                                        <strong>
-                                            Author:
-                                         C. Schultz, Universal Features Syndicate
-                                    <line>
-                                        <strong>
-                                            Contact:
-                                         Los Angeles, CA; <
-                                        <reference refuri="mailto:cschultz@peanuts.example.org">
-                                            cschultz@peanuts.example.org
-                                        >
-                            <container classes="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4" design_component="grid-item" is_div="True">
-                                <paragraph>
-                                    <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
-                                        foo
-                                    <inline>
-                                         
-                                    <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
-                                        bar
-                                <paragraph>
-                                    <inline classes="sd-sphinx-override sd-badge sd-outline-success sd-text-success">
-                                        baz
-                                <paragraph>
-                                    <inline classes="sd-sphinx-override sd-badge sd-outline-secondary sd-text-secondary">
-                                        qux
-                                <paragraph>
-                                    <inline classes="sd-sphinx-override sd-badge sd-outline-info sd-text-info">
-                                        anything
+                        <container classes="sd-container-fluid sd-sphinx-override sd-m-0 sd-p-0" design_component="grid-container" is_div="True">
+                            <container classes="sd-row sd-m-0 sd-p-0" design_component="grid-row" is_div="True">
+                                <container classes="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8" design_component="grid-item" is_div="True">
+                                    <paragraph>
+                                        <reference name="example.org/beagles" refuri="https://example.org/beagles">
+                                            example.org/beagles
+                                        <target ids="example-org-beagles" names="example.org/beagles" refuri="https://example.org/beagles">
+                                    <line_block>
+                                        <line>
+                                            A module for collecting votes from beagles,
+                                        <line>
+                                            and for consolidating them.
+                                    <line_block>
+                                        <line>
+                                            <strong>
+                                                Author:
+                                             C. Schultz, Universal Features Syndicate
+                                        <line>
+                                            <strong>
+                                                Contact:
+                                             Los Angeles, CA; <
+                                            <reference refuri="mailto:cschultz@peanuts.example.org">
+                                                cschultz@peanuts.example.org
+                                            >
+                                <container classes="sd-col sd-d-flex-column sd-col-4 sd-col-xs-4 sd-col-sm-4 sd-col-md-4 sd-col-lg-4" design_component="grid-item" is_div="True">
+                                    <paragraph>
+                                        <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
+                                            foo
+                                        <inline>
+                                             
+                                        <inline classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary">
+                                            bar
+                                    <paragraph>
+                                        <inline classes="sd-sphinx-override sd-badge sd-outline-success sd-text-success">
+                                            baz
+                                    <paragraph>
+                                        <inline classes="sd-sphinx-override sd-badge sd-outline-secondary sd-text-secondary">
+                                            qux
+                                    <paragraph>
+                                        <inline classes="sd-sphinx-override sd-badge sd-outline-info sd-text-info">
+                                            anything else
