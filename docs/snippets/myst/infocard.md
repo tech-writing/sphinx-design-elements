@@ -20,7 +20,7 @@ and for consolidating them.
 
 {tags-secondary}`qux`
 
-{tags-info}`anything`
+{tags-info}`anything else`
 :::
 
 ::::
