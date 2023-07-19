@@ -5,23 +5,22 @@
 
 ## About
 
-The `tag` and `tags` roles are shortcuts to the `badge` roles of sphinx{design},
-see [](inv:sd#badges).
+The `tag` and `tags` roles are shortcuts to the `bdg` badge roles of
+[sphinx{design}](inv:sd#index), see [](inv:sd#badges).
 
 
 ## Details
 
-The idea is to need less code for defining "tag"-like badges within the
+The idea is to reduce markup code for defining "tag"-like badges within the
 [](#infocard-directive) element. All of them will use the `outline` option flag
-by default, to give them a corresponding visual appearance.
+by default, to give them a corresponding visual appearance like demonstrated below.
+
+There are two roles: `{tag}` and `{tags}`. A `{tag}` will render its text content
+1:1 into a single badge element, while `{tags}` will split the text by comma (`,`),
+and renders the outcome using multiple badge elements.
 
 
 ## Synopsis
-
-There is the `{tag}`, and the `{tags}` role. A `{tag}` will render its text content
-1:1 into a single badge element, while `{tags}` will split the text by comma (`,`),
-and renders the outcome using individual badge elements.
-
 
 ::::{sd-table}
 :widths: 3 3 3 3
