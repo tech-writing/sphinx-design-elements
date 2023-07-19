@@ -7,10 +7,10 @@
 
 _sd-table -- Tables with sphinx{design}_.
 
-A generic, beautiful, yet efficient table element based on a [grid layout](inv:sd#grids),
-with top-down configuration capabilities.
+A beautiful and generic table element based on a [sphinx{design} grid layout](inv:sd#grids),
+with top-down configuration features.
 
-It provides the Sphinx directives `sd-table`, `sd-row`, and `sd-item`,
+It implements the Sphinx directives `sd-table`, `sd-row`, and `sd-item`,
 and a few convenience directive options and flags on them.
 
 
@@ -20,9 +20,9 @@ The idea of this element is to implement a table based on a grid layout, which c
 be parameterized using directives on the table level, so that styling details will
 not clutter the leaf nodes (row and item) too much.
 
-To goal is to provide a table element as an alternative to the `list-table` and
-`csv-table` directives, which explores a few needs of authors not offered by
-other Sphinx directives.
+This grid table element is an alternative to the vanilla `list-table` and `csv-table`
+directive implementations, and as such, explores a few needs of authors not provided
+elsewhere.
 
 
 ## Synopsis
@@ -82,7 +82,13 @@ A few more variants how to change the visual appearance.
 
 ### Visual line separators
 
-Using `:row-class:` to assign row-level styles on the table-level component.
+By using `:row-class:` on the table-level directive, row-level styles can be
+assigned conveniently.
+
+```markdown
+::::{sd-table}
+:row-class: top-border
+```
 
 ::::{sd-table}
 :widths: 3 9

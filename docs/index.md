@@ -38,13 +38,13 @@ Get Started
 
 ::::::
 
-Building upon sphinx-design
+Building upon sphinx{design}
 : [sphinx-design] is a Sphinx extension for designing beautiful, screen-size
   responsive web-components. It is inspired by the [Bootstrap], [Material Design],
-  and [Material-UI] design frameworks, and is the foundation for all composite
-  elements in this collection.
+  and [Material-UI] design frameworks, and uses [CSS Flexible Box Layout], commonly
+  known as [Flexbox]. It is the foundation for all composite elements in this collection.
 
-Works with reStructuredText (rST) and Markedly Structured Text (MyST)
+Works with both reStructuredText (rST) and Markedly Structured Text (MyST)
 : Either write documentation using the venerable [reStructuredText], or use the
   new extended [Markdown]/[CommonMark] syntax [Markedly Structured Text]. Both
   are supported equally well.
@@ -108,11 +108,11 @@ HTML table based on a grid layout, with ergonomic top-down configuration.
 Composite info card container element, to be used as a grid item.
 :::
 
-:::{grid-item-card} {octicon}`plus-circle` Special badges
+:::{grid-item-card} {octicon}`tag` Special badges
 :link: tag
 :link-type: doc
 
-Special {bdg-primary}`badges` and other components.
+Special {tags}`tag-like, badges` and other components.
 :::
 
 ::::
@@ -126,6 +126,8 @@ Kudos to [Chris Sewell] and all contributors for conceiving and maintaining
 [Bootstrap]: https://getbootstrap.com/
 [Chris Sewell]: https://github.com/chrisjsewell
 [CommonMark]: https://spec.commonmark.org/
+[CSS Flexible Box Layout]: https://en.wikipedia.org/wiki/CSS_Flexible_Box_Layout
+[Flexbox]: https://www.w3.org/TR/css-flexbox-1/
 [Markdown]: https://daringfireball.net/projects/markdown/syntax
 [Markedly Structured Text]: https://myst-parser.readthedocs.io/
 [Material Design]: https://material.io

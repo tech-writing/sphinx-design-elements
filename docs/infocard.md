@@ -6,19 +6,15 @@
 ## About
 
 A composite info card container element, to be used as an item within
-a [grid layout](inv:sd#grids). It provides the Sphinx directive `info-card`.
+a [grid layout](inv:sd#grids). It implements the Sphinx directive `info-card`.
 
 
 ## Details
 
-The info card is a composite element offering a title, description text, and
-both verbose and short tags. It is suitable for authoring pages enumerating
-items with dense information, without the maintenance nightmares of tables.
-
-For a compact notation of the short tag elements, it uses the corresponding
-[](#tag-role) for efficiently rendering [](inv:sd#badges), which is also
-provided by this package.
-
+The info card is a composite element based on nested grid and card components
+from [](inv:sd#index). It is suitable to be used as an alternative to tables,
+for example when authoring pages enumerating items with dense information,
+without the maintenance nightmares of tables.
 
 ## Synopsis
 
@@ -49,6 +45,15 @@ and for consolidating them.
 
 ::::
 
+:::{note}
+This example provides a title with link, a formatted description text, and both
+verbose and short tags, represented using badges.
+
+For a compact markup to represent the short tag elements, it uses a shortcut notation
+based on the corresponding [](#tag-role), for efficiently rendering [sphinx{design}
+badges](inv:sd#badges) with a special appearance.
+:::
+
 
 ## Usage
 ````{tab-set-code}
@@ -60,5 +65,7 @@ and for consolidating them.
 ```
 ````
 
+
+---
 
 _This page is written in Markedly Structured Text (MyST Markdown)._

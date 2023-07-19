@@ -38,12 +38,13 @@ high-level elements on top.
 
 ## Development
 
-In order to set up the project in development mode, visit the [](#development)
-documentation.
+In order to learn how to set up the project in development mode, please visit the
+[development documentation].
 
 
 
 [Changelog]: https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md
+[development documentation]: https://sphinx-design-elements.readthedocs.io/en/latest/sandbox.html
 [Documentation]: https://sphinx-design-elements.readthedocs.io/
 [Issues]: https://github.com/panodata/sphinx-design-elements/issues
 [License]: https://github.com/panodata/sphinx-design-elements/blob/main/LICENSE

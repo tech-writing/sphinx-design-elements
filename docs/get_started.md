@@ -3,7 +3,7 @@
 # Getting Started
 
 ```{article-info}
-:author: "[Panodata Developers](https://github.com/panodata)"
+:author: "[The Panodata Developers](https://github.com/panodata)"
 :date: "{sub-ref}`today`"
 :read-time: "1 min read"
 ```
@@ -11,11 +11,11 @@
 
 ## Setup
 
-The basic installation supports documentation authoring using the [reStructuredText]
-syntax. You can optionally support the Markdown syntax by enabling the [Markedly
-Structured Text] (MyST) syntax.
+The basic installation supports documentation authoring using the [reStructuredText] (rST)
+syntax. You can optionally support an extended [Markdown] syntax by installing and enabling
+the [Markedly Structured Text] (MyST) extension.
 
-### Setup with reStructuredText
+### Use reStructuredText
 
 Install the package.
 ```shell
@@ -33,7 +33,7 @@ extensions = [
 ```
 
 
-### Setup with Markdown
+### Use Markedly Structured Text
 
 Install the packages.
 ```shell
@@ -76,6 +76,7 @@ would like to share with others, do not hesitate to submit patches, in order to
 add them to the collection.
 
 
+[Markdown]: https://daringfireball.net/projects/markdown/syntax
 [Markedly Structured Text]: https://myst-parser.readthedocs.io/
 [reStructuredText]: https://docutils.sourceforge.io/rst.html
 [Sphinx]: https://www.sphinx-doc.org/
