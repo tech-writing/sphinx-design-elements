@@ -38,7 +38,7 @@ Get Started
 
 ::::::
 
-Building upon sphinx{design}
+Building upon sphinx{design} and Flexbox
 : [sphinx-design] is a Sphinx extension for designing beautiful, screen-size
   responsive web-components. It is inspired by the [Bootstrap], [Material Design],
   and [Material-UI] design frameworks, and uses [CSS Flexible Box Layout], commonly

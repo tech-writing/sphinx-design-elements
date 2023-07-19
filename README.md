@@ -41,13 +41,20 @@ high-level elements on top.
 In order to learn how to set up the project in development mode, please visit the
 [development documentation].
 
+## Acknowledgements
+
+Kudos to [Chris Sewell] and all contributors for conceiving and maintaining
+[MyST Parser] and [sphinx-design].
+
 
 
 [Changelog]: https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md
+[Chris Sewell]: https://github.com/chrisjsewell
 [development documentation]: https://sphinx-design-elements.readthedocs.io/en/latest/sandbox.html
 [Documentation]: https://sphinx-design-elements.readthedocs.io/
 [Issues]: https://github.com/panodata/sphinx-design-elements/issues
 [License]: https://github.com/panodata/sphinx-design-elements/blob/main/LICENSE
+[MyST Parser]: https://myst-parser.readthedocs.io/
 [PyPI]: https://pypi.org/project/sphinx-design-elements/
 [Source code]: https://github.com/panodata/sphinx-design-elements
 [sphinx-design]: https://sphinx-design.readthedocs.io/
