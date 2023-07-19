@@ -81,6 +81,13 @@ tag
 ```
 
 ```{toctree}
+:caption: Styling
+:hidden:
+
+css_classes
+```
+
+```{toctree}
 :caption: Development
 :hidden:
 
