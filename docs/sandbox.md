@@ -50,6 +50,22 @@ In order to edit or inspect the CSS stylesheet rules, head over to
 [`compiled/style.css`]. For editing or inspecting the directive- and
 role-implementations, see [`gridtable.py`], [`infocard.py`], and [`tag.py`].
 
+
+## Releasing
+
+```shell
+# Install a few more prerequisites.
+pip install --editable=.[release]
+
+# Designate a new version.
+git tag v0.1.0
+git push --tags
+
+# Build package, and publish to PyPI.
+poe release
+```
+
+
 [`compiled/style.css`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/compiled/style.css
 [`gridtable.py`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/gridtable.py
 [`infocard.py`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/infocard.py
