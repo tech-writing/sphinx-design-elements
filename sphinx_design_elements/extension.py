@@ -8,6 +8,7 @@ from sphinx.environment import BuildEnvironment
 from sphinx_design.extension import depart_container, visit_container
 
 from . import compiled as static_module
+from .dropdown_group import setup_dropdown_group
 from .gridtable import setup_gridtable
 from .infocard import setup_infocard
 from .tag import setup_tags
@@ -25,6 +26,7 @@ def setup_extension(app: Sphinx) -> None:
     setup_gridtable(app)
     setup_infocard(app)
     setup_tags(app)
+    setup_dropdown_group(app)
 
 
 def update_css_js(app: Sphinx):

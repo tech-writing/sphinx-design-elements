@@ -1,0 +1,15 @@
+<document source="index" translation_progress="{'total': 0, 'translated': 0}">
+    <section ids="heading" names="heading">
+        <title>
+            Heading
+        <container classes="dropdown-group" design_component="div" is_div="True">
+            <container body_classes="" container_classes="sd-mb-3" design_component="dropdown" has_title="True" icon="True" is_div="True" opened="False" title_classes="" type="dropdown">
+                <rubric>
+                    Dropdown A
+                <paragraph>
+                    Dropdown content A
+            <container body_classes="" container_classes="sd-mb-3" design_component="dropdown" has_title="True" icon="True" is_div="True" opened="False" title_classes="" type="dropdown">
+                <rubric>
+                    Dropdown B
+                <paragraph>
+                    Dropdown content B

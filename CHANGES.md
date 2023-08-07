@@ -1,5 +1,10 @@
 # Change Log
 
+## Unreleased
+
+- For dropdown elements that should exclusively open when toggled,
+  add a `dropdown-group` CSS class
+
 ## v0.1.0 - 2023-07-19
 
 - Add "grid table" element, using directives `sd-table`, `sd-row`, `sd-item`
