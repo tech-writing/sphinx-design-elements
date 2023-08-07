@@ -74,6 +74,7 @@ get_started
 gridtable
 infocard
 shield
+smartinclude/index
 ```
 
 ```{toctree}
