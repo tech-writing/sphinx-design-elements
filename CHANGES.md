@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+
+## v0.2.0 - 2023-08-08
+
 - For dropdown elements that should exclusively open when toggled,
   add a `dropdown-group` CSS class
 
