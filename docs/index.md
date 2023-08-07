@@ -87,6 +87,7 @@ tag
 :hidden:
 
 css_classes
+dropdown-group
 ```
 
 ```{toctree}
