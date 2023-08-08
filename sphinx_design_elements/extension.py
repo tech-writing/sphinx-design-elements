@@ -47,6 +47,7 @@ def add_assets(app: Sphinx):
     app.config.html_static_path.append(str(static_path))
 
     # Add asset files.
+    add_asset(app, static_path, "addon.js")
     add_asset(app, static_path, "style.css")
 
     if not static_existed:
