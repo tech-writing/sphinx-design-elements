@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## v0.2.1 - 2023-08-08
+
 - Improve JS/CSS asset loading
 - Fix JavaScript for dropdown group elements
 
