@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Improve JS/CSS asset loading
 
 ## v0.2.0 - 2023-08-08
 
