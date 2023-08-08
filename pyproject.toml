@@ -196,7 +196,7 @@ check = [
 ]
 
 docs-autobuild = [
-  { cmd = "sphinx-autobuild --open-browser docs docs/_build" }
+  { cmd = "sphinx-autobuild --open-browser --watch sphinx_design_elements docs docs/_build" }
 ]
 docs-html = [
   { cmd = "sphinx-build docs docs/_build" }
