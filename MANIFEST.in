@@ -1,5 +1,5 @@
 include *.md *.rst LICENSE
 recursive-include docs *.md *.rst
-recursive-include sphinx_design_elements *.css
+recursive-include sphinx_design_elements *.css *.js
 prune release
 prune tests

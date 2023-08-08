@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Improve JS/CSS asset loading
+- Fix JavaScript for dropdown group elements
 
 ## v0.2.0 - 2023-08-08
 
