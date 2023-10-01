@@ -10,7 +10,7 @@
 ## v0.2.0 - 2023-08-08
 
 - For dropdown elements that should exclusively open when toggled,
-  add a `dropdown-group` CSS class
+  add a `dropdown-group` CSS class. Thanks, @kojinkai and @msbt.
 
 ## v0.1.0 - 2023-07-19
 
