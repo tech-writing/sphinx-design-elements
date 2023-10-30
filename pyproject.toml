@@ -72,7 +72,7 @@ docs = [
   "sphinx-copybutton",
 ]
 release = [
-  "build<1",
+  "build<2",
   "keyring",
   "twine<5",
 ]
