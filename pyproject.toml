@@ -53,7 +53,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "sphinx<7.2",
+  "sphinx<7.3",
   "sphinx-design<1",
 ]
 [project.optional-dependencies]
