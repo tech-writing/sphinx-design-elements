@@ -7,6 +7,7 @@ composite elements, the outcome of more complex nested nodes is often
 not the same, specifically when using multi-line content or
 cross-references within cell/item contents.
 """
+
 from pathlib import Path
 from typing import Callable
 
