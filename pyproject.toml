@@ -59,7 +59,7 @@ dependencies = [
 develop = [
   "black<24",
   "mypy==1.8.0",
-  "poethepoet<0.25",
+  "poethepoet<0.26",
   "pyproject-fmt<1.8",
   "ruff==0.1.14",
   "types-docutils==0.20.0.3",
