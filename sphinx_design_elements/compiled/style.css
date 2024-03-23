@@ -5,6 +5,11 @@
 
 /* General */
 
+/* Display paragraphs inline (side by side) */
+.inline p {
+  display: inline;
+}
+
 /* Very small text size */
 .text-small {
   font-size: small;
@@ -54,6 +59,14 @@
 }
 .sd-col > .highlight-restructuredtext {
   margin: unset;
+}
+
+/* Shield: Inside a grid table, code blocks in neighbouring cells did not have any margins to each other. */
+.col-compact * {
+  margin-bottom: 0.3em;
+}
+.sd-col .highlight {
+  margin-bottom: 0.3em !important;
 }
 
 /* Info card: Fix grid item formatting. */

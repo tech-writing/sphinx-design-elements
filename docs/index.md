@@ -73,6 +73,7 @@ get_started
 
 gridtable
 infocard
+shield
 ```
 
 ```{toctree}
@@ -116,6 +117,13 @@ HTML table based on a grid layout, with ergonomic top-down configuration.
 :link-type: doc
 
 Composite info card container element, to be used as a grid item.
+:::
+
+:::{grid-item-card} {octicon}`shield` Shield
+:link: shield
+:link-type: doc
+
+Badge generator for Shields\.io, with optional target linking.
 :::
 
 :::{grid-item-card} {octicon}`tag` Special badges
