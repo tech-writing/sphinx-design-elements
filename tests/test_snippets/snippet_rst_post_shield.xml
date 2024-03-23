@@ -1,0 +1,7 @@
+<document source="index" translation_progress="{'total': 0, 'translated': 0}">
+    <section ids="heading" names="heading">
+        <title>
+            Heading
+        <paragraph>
+            <reference reftitle="An example using the shield directive" refuri="https://example.org/">
+                <image alt="An example using the shield directive" candidates="{'?': 'https://img.shields.io/badge/Example-Shield-darkcyan?logo=Markdown'}" uri="https://img.shields.io/badge/Example-Shield-darkcyan?logo=Markdown">

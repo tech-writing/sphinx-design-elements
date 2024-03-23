@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Accept more options on grid table's `sd-item` directive
+- Add `shield` directive, to render badges through Shields.io
 
 ## v0.2.1 - 2023-08-08
 
