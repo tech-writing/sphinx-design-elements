@@ -66,7 +66,9 @@ badges](inv:sd#badges) with a special appearance.
 ````
 
 
-## More examples
+## Variants
+
+A few more variants how to change the visual appearance.
 
 :::::{info-card}
 
