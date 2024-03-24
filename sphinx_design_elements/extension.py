@@ -26,10 +26,10 @@ def setup_extension(app: Sphinx) -> None:
     # of adding the `container` class to all `nodes.container`.
     app.add_node(nodes.container, override=True, html=(visit_container, depart_container))
 
+    setup_dropdown_group(app)
     setup_gridtable(app)
     setup_infocard(app)
     setup_tags(app)
-    setup_dropdown_group(app)
 
 
 def add_assets(app: Sphinx):

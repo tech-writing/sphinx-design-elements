@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Accept more options on grid table's `sd-item` directive
+
 ## v0.2.1 - 2023-08-08
 
 - Improve JS/CSS asset loading
