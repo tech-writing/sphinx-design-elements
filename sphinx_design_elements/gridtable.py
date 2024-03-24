@@ -46,11 +46,11 @@ class TableDirective(SphinxDirective):
     required_arguments = 0
     optional_arguments = 1
     option_spec = {
-        "widths": widths_option,
+        "item-outline": directives.flag,
         "outline": directives.flag,
         "row-class": directives.class_option,
         "row-outline": directives.flag,
-        "item-outline": directives.flag,
+        "widths": widths_option,
     }
 
     def run(self) -> List[nodes.Node]:
@@ -120,7 +120,13 @@ class ItemDirective(SphinxDirective):
 
     has_content = True
     option_spec = {
+        "child-align": directives.unchanged,
+        "child-direction": directives.unchanged,
+        "class": directives.class_option,
+        "columns": directives.unchanged,
+        "margin": directives.unchanged,
         "outline": directives.flag,
+        "padding": directives.unchanged,
     }
 
     def run(self) -> List[nodes.Node]:
