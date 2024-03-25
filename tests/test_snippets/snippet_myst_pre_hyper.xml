@@ -1,0 +1,14 @@
+<document source="index" translation_progress="{'total': 0, 'translated': 0}">
+    <section ids="heading" names="heading">
+        <title>
+            Heading
+        <paragraph>
+            :Text-Only:
+            
+            <reference refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                Technical advancements in Sphinx
+        <paragraph>
+            :Shield:
+            
+            <reference reftitle="Technical advancements in Sphinx" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                <image alt="Technical advancements in Sphinx" candidates="{'?': 'https://img.shields.io/badge/Navigate%20to-Technical%20advancements%20in%20Sphinx-blue'}" uri="https://img.shields.io/badge/Navigate%20to-Technical%20advancements%20in%20Sphinx-blue">

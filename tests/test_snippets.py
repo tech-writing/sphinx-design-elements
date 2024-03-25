@@ -13,7 +13,7 @@ from typing import Callable
 
 import pytest
 
-from .conftest import SphinxBuilder
+from tests.conftest import SphinxBuilder
 
 SNIPPETS_PATH = Path(__file__).parent.parent / "docs" / "snippets"
 SNIPPETS_GLOB_RST = list((SNIPPETS_PATH / "rst").glob("[!_]*"))

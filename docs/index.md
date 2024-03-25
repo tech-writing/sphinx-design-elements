@@ -80,6 +80,7 @@ shield
 :caption: Roles
 :hidden:
 
+hyper
 tag
 ```
 
@@ -124,6 +125,13 @@ Composite info card container element, to be used as a grid item.
 :link-type: doc
 
 Badge generator for Shields\.io, with optional target linking.
+:::
+
+:::{grid-item-card} {octicon}`shield` Hyper
+:link: hyper
+:link-type: doc
+
+A versatile hyperlink generator.
 :::
 
 :::{grid-item-card} {octicon}`tag` Special badges

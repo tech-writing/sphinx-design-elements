@@ -113,6 +113,7 @@ test = [
   "pytest<9",
   "pytest-cov<6",
   "pytest-regressions<3",
+  "sphinx_pytest<0.3",
 ]
 [project.urls]
 changelog = "https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md"
