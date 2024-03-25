@@ -10,6 +10,11 @@
   display: inline;
 }
 
+hr.docutils {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 /* Very small text size */
 .text-small {
   font-size: small;

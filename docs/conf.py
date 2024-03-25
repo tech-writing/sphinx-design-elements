@@ -12,6 +12,7 @@ extensions = [
     "sphinx_design",
     "sphinx_design_elements",
     "sphinx.ext.intersphinx",
+    "sphinx.ext.todo",
 ]
 
 html_theme = os.environ.get("SPHINX_THEME", "furo")
@@ -61,3 +62,5 @@ intersphinx_mapping = {
     "sd": ("https://sphinx-design.readthedocs.io/en/latest/", None),
     "myst": ("https://myst-parser.readthedocs.io/en/latest/", None),
 }
+
+todo_include_todos = True

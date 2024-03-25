@@ -1,9 +1,11 @@
 import os
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Callable, Dict, Optional
 
 import pytest
 from docutils import nodes
+from docutils.parsers.rst import roles
+from sphinx import addnodes
 from sphinx.testing.path import path as sphinx_path
 from sphinx.testing.util import SphinxTestApp
 from sphinx_design._compat import findall
@@ -84,3 +86,39 @@ def sphinx_builder(tmp_path: Path, make_app, monkeypatch):
         return SphinxBuilder(app, src_path)
 
     yield _create_project
+
+
+@pytest.fixture
+def render(sphinx_builder: Callable[..., SphinxBuilder]):
+    roles._roles.clear()
+
+    def do(content):
+        builder = sphinx_builder()
+        return render_reference_builder(builder, content)
+
+    return do
+
+
+def clean_doctree(doctree, pop_doc_attrs=("translation_progress",)):
+    for attr_name in pop_doc_attrs:
+        doctree.attributes.pop(attr_name, None)
+    return doctree
+
+
+def render_reference_builder(builder: SphinxBuilder, content: str):
+    """Test snippets written in MyST Markdown (after post-transforms)."""
+    from tests.test_snippets import write_assets
+
+    builder.src_path.joinpath("index.md").write_text(content, encoding="utf8")
+    write_assets(builder.src_path)
+    builder.build()
+
+    text = find_reference(clean_doctree(builder.get_doctree("index", post_transforms=True))).pformat()
+    return text
+
+
+def find_reference(node: nodes.Node):
+    results = list(node.findall(lambda _node: isinstance(_node, (nodes.reference, addnodes.pending_xref))))
+    if results:
+        return results[0]
+    return node
