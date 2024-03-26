@@ -3,10 +3,16 @@
         <title>
             Heading
         <paragraph>
-            :Text-Only:
+            :Text:
             
             <reference refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
                 Technical advancements in Sphinx
+        <paragraph>
+            :Button:
+            
+            <reference classes="sd-sphinx-override sd-btn sd-text-wrap sd-btn-outline-primary" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                <inline>
+                    Technical advancements in Sphinx
         <paragraph>
             :Shield:
             

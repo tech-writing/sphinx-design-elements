@@ -109,6 +109,7 @@ def render_reference_builder(builder: SphinxBuilder, content: str):
     """Test snippets written in MyST Markdown (after post-transforms)."""
     from tests.test_snippets import write_assets
 
+    builder.app.config.intersphinx_disabled_reftypes = []
     builder.src_path.joinpath("index.md").write_text(content, encoding="utf8")
     write_assets(builder.src_path)
     builder.build()

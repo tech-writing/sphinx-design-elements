@@ -10,6 +10,11 @@
   display: inline;
 }
 
+/* No borders */
+.no-margin {
+  margin: 0;
+}
+
 hr.docutils {
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -78,4 +83,8 @@ hr.docutils {
 .sd-col > div.line-block {
   margin-top: unset;
   margin-bottom: unset;
+}
+
+.bottom-margin-generous {
+  margin-bottom: 2em !important;
 }

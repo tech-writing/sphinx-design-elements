@@ -9,6 +9,7 @@ from docutils.nodes import Node, system_message, unescape
 from docutils.parsers.rst.states import Inliner
 from myst_parser.mocking import MockInliner
 from sphinx.application import Sphinx
+from sphinx.jinja2glue import _tobool
 from sphinx.roles import AnyXRefRole
 from sphinx.util.docutils import SphinxRole
 
@@ -51,7 +52,10 @@ class HyperRefRole(AnyXRefRole):
     {hyper}`Navigate to Tutorial <fts-analyzer> {type=shield,color=darkcyan,logo=Markdown}`
     """
 
-    special_types = ["shield"]
+    special_types = [
+        "button",
+        "shield",
+    ]
 
     options_re = re.compile(r"^(?P<target>.+?)\s*(?:{(?P<options>.+)})?$", re.DOTALL)
     title_and_options_re = re.compile(
@@ -188,32 +192,50 @@ class HyperRefRole(AnyXRefRole):
             )
         del self.ref_options["type"]
 
-        if not self.ref_options.get("message"):
-            self.ref_options["message"] = self.title or self.target
-
         tpl = {
             "title": self.title,
             "target": self.target,
         }
-        if message := self.ref_options.get("message"):
-            message = message % tpl
-            self.ref_options["message"] = message
-        if label := self.ref_options.get("label"):
-            label = label % tpl
-            self.ref_options["label"] = label
 
-        if not self.ref_options.get("link"):
-            self.ref_options["link"] = self.target
-        if not self.ref_options.get("link-type"):
-            self.ref_options["link-type"] = link_type(self.ref_options.get("link"))
-        if not self.ref_options.get("link-title"):
-            self.ref_options["link-title"] = self.ref_options["message"]
+        # Argument and content of directive.
+        argument0 = ""
+        content = ""
 
-        snippet = f"""
-:::{{shield}}
-{self.directive_options}
-:::""".strip()
+        if type_ == "button":
+            self.ref_options.setdefault("color", "primary")
+            no_text = _tobool(self.ref_options.pop("notext", False))
 
+            argument0 = self.target
+            if self.srh.is_url():
+                type_ = "button-link"
+            else:
+                type_ = "button-ref"
+            if self.title and not no_text:
+                content = self.title
+
+            if icon := self.ref_options.pop("icon", None):
+                icon_type, icon_options = icon.split(":")
+                icon_myst = f"{{{icon_type}}}`{icon_options}`"
+                content = f"{icon_myst} {content}"
+
+        elif type_ == "shield":
+            self.ref_options.setdefault("message", self.title or self.target)
+
+            if message := self.ref_options.get("message"):
+                message = message % tpl
+                self.ref_options["message"] = message
+            if label := self.ref_options.get("label"):
+                label = label % tpl
+                self.ref_options["label"] = label
+
+            self.ref_options.setdefault("link", self.target)
+            self.ref_options.setdefault("link-type", link_type(self.ref_options.get("link")))
+            self.ref_options.setdefault("link-title", self.ref_options["message"])
+
+        else:
+            raise NotImplementedError(f"Hyper type not implemented: {type_}")
+
+        snippet = f":::{{{type_}}} {argument0}\n{self.directive_options}{content}\n:::"
         return self.render_snippet(snippet)
 
     def render_snippet(self, snippet: str) -> Tuple[List[nodes.Node], List[nodes.system_message]]:
@@ -234,7 +256,11 @@ class HyperRefRole(AnyXRefRole):
         """
         Format options in MyST directive format, using YAML.
         """
-        return "---\n" + yaml.dump(self.ref_options)
+        items = self.ref_options.copy()
+        for key, value in items.items():
+            if not value or _tobool(value):
+                items[key] = True
+        return "---\n" + yaml.dump(items) + "---\n"
 
 
 def decode_hyper_options(text: str) -> Dict[str, str]:

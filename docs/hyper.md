@@ -39,10 +39,19 @@ linking capabilities.
 
 :Layout and Style:
     Other than rendering plain HTML hyperlink anchors, the `hyper` role
-    provides an array of options to present hyperlinks differently.
-    For example, hyperlinks can be represented through badges from
-    [Shields.io], building upon the {ref}`shield <shield-directive>`
-    directive, just by slapping a `{type=shield}` option on it.
+    provides an array of options to present hyperlinks differently. Hyper
+    currently supports:
+
+    :::{rubric} Button
+    :::
+    The {ref}`hyper-button` Hyper renders hyperlinks using the
+    {ref}`button <sd:buttons>` directive from [](inv:sd#index).
+
+    :::{rubric} Shield
+    :::
+    A {ref}`hyper-shield`-typed Hyper renders hyperlinks using
+    badges from [Shields.io], building upon the {ref}`shield
+    <shield-directive>` directive from {ref}`index`.
 
 
 ## Synopsis
@@ -52,8 +61,11 @@ defined using the markup outlined below.
 
 ::::{card}
 
-:Text-Only:
+:Text:
     {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {short-title=true}`
+
+:Button:
+    {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=button,outline=true,short-title=true}`
 
 :Shield:
     {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=shield,label=Navigate to,short-title=true}`
@@ -80,7 +92,7 @@ mimicking and expanding `{ref}`.
 
 :::::::{sd-table}
 :widths: 3 9
-:row-class: col-compact
+:row-class: col-compact bottom-margin-generous
 
 :::{rubric} Fundamentals
 :::
@@ -193,10 +205,10 @@ Indirect references are defined out-of-band from the link definition, for exampl
 at the end of the page.
 
 In MyST, indirect references are defined by, for example:
-- `[label]: <reference>`
-- `[label]: #<reference>`
-- `[label]: inv:<project>#<reference>`
-- `[label]: <url>`
+- `[label]: reference`
+- `[label]: #reference`
+- `[label]: inv:project#reference`
+- `[label]: url`
 :::{div} text-small
 **Note:** This only works in MyST.
 :::
@@ -220,15 +232,246 @@ In MyST, indirect references are defined by, for example:
 
 The `hyper` role provides a few rendering variants.
 
+
+(hyper-button)=
+### Button
+
+Adding the option `{type=button}` renders the hyperlink using a badge based
+on the sphinx-design [`button`](inv:sd#buttons) directive implementation, it
+accepts the same options, and the additional `icon` option.
+
+ref-type (`button-ref` only)
+: Type of reference to use; `any` (default), `ref`, `doc`, or `myst`
+
+color
+: Set the color of the button (background and font).
+  One of the semantic color names: `primary`, `secondary`, `success`, `danger`,
+  `warning`, `info`, `light`, `dark`, `muted`.
+  The default value is `primary`.
+
+outline
+: Display button in outlined color style variant. Use `outline=true`
+  to toggle that option.
+
+align
+: Align the button on the page; `left`, `right`, `center` or `justify`
+
+expand
+: Expand to fit parent width. Use `expand=true` to toggle that option.
+
+click-parent
+: Make parent container also clickable. Use `click-parent=true` to
+  toggle that option.
+
+tooltip
+: Add tooltip text, displayed when hovering over the link.
+
+icon
+: All [icon features](inv:sd#icons) of sphinx-design can be used. The icon,
+  when given, will be placed on the left hand side of the text. The micro syntax
+  to describe it is not much different from the original role notation, just note
+  the colon `:` separates icon family from icon name.
+  ```markdown
+  {octicon}`report;1em;sd-text-info`  # Original MyST
+  octicon:report;1em;sd-text-info     # Hyper inline variant
+  ```
+
+shadow
+: Add shadow CSS.
+
+class
+: Additional CSS classes.
+
+
 :::::::{sd-table}
 :widths: 3 9
-:row-class: col-compact
+:row-class: col-compact bottom-margin-generous
 
-:::{rubric} Shield
+::::::{sd-row}
+:::::{sd-item} **Item**
+:::::
+:::::{sd-item} **Description and Syntax**
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=button}` \
+{hyper}`Read More <https://example.org> {type=button}`
+:::::
+:::::{sd-item}
+A basic button hyperlink for URLs, without any options.
+::::{code} markdown
+
+{hyper}`https://example.org {type=button}` \
+{hyper}`Read More <https://example.org> {type=button}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`shield-directive {type=button}` \
+{hyper}`Shield badges <shield-directive> {type=button}`
+:::::
+:::::{sd-item}
+Use project-local references.
+::::{code} markdown
+
+{hyper}`shield-directive {type=button}` \
+{hyper}`Shield badges <shield-directive> {type=button}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`sd:sd-cards {type=button}` \
+{hyper}`Card Layouts <sd:sd-cards> {type=button}`
+:::::
+:::::{sd-item}
+Use intersphinx references.
+::::{code} markdown
+
+{hyper}`sd:sd-cards {type=button}` \
+{hyper}`Card Layouts <sd:sd-cards> {type=button}`
+::::
+:::::
+::::::
+
+
+:::{rubric} Layout
 :::
+
+::::::{sd-row}
+:::::{sd-item}
+`expand` option.
+:::::
+:::::{sd-item}
+Use the `expand` option to fit the element to the width of its parent.
+{hyper}`https://example.org {type=button,expand=true}`
+::::{code} markdown
+
+{hyper}`https://example.org {type=button,expand=true}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+`align` option.
+:::::
+:::::{sd-item}
+Use the `align` option.
+
+{hyper}`https://example.org {type=button,align=center}`
+::::{code} markdown
+
+{hyper}`https://example.org {type=button,align=center}`
+::::
+:::{todo}
+:class: no-margin
+Apparently, the `align` option does not work?
+:::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
+{hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
+{hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
+:::::
+:::::{sd-item}
+Because `hyper` roles render as inline elements, multiple instances can
+be placed side by side, even when written down spanning multiple lines.
+Regular button directives are block level elements, which would cause
+line breaks.
+::::{code} markdown
+
+{hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
+{hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
+{hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
+::::
+:::::
+::::::
+
+
+:::{rubric} Style
+:::
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=button,outline=true}` \
+{hyper}`https://example.org {type=button,color=info}` \
+{hyper}`https://example.org {type=button,shadow=true}`
+:::::
+:::::{sd-item}
+Use `outline`, `color`, and `shadow` options.
+::::{code} markdown
+
+{hyper}`https://example.org {type=button,outline=true}` \
+{hyper}`https://example.org {type=button,color=info}` \
+{hyper}`https://example.org {type=button,shadow=true}`
+::::
+:::{todo}
+:class: no-margin
+Apparently, the `shadow` option does not work?
+:::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=button,class=text-small}` \
+{hyper}`https://example.org {type=button,tooltip=Tooltip Message}`
+:::::
+:::::{sd-item}
+Use `class` and `tooltip` options.
+::::{code} markdown
+
+{hyper}`https://example.org {type=button,class=text-small}` \
+{hyper}`https://example.org {type=button,tooltip=Tooltip Message}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`Read More <https://example.org> {type=button,icon=octicon:report}` \
+{hyper}`Read More <https://example.org> {type=button,color=info,outline=true,icon=material-outlined:emoji_objects;3em;sd-text-primary}`
+:::::
+:::::{sd-item}
+The value of the `icon` option translates to the syntax of an {ref}`inline icon
+<sd:icons>` from [](inv:sd#index), inheriting all its features.
+::::{code} markdown
+
+{hyper}`Read More <https://example.org> {type=button,icon=octicon:report}` \
+{hyper}`Read More <https://example.org> {type=button,color=info,outline=true,icon=material-outlined:emoji_objects;3em;sd-text-primary}`
+::::
+:::::
+::::::
+
+
+:::::::
+
+
+(hyper-shield)=
+### Shield
 
 Adding the option `{type=shield}` renders the hyperlink using a badge based
 on the [`shield`](#shield-directive) directive implementation.
+
+:::::::{sd-table}
+:widths: 3 9
+:row-class: col-compact bottom-margin-generous
 
 ::::::{sd-row}
 :::::{sd-item} **Item**
@@ -318,6 +561,9 @@ MyST reference syntax is also supported for intersphinx links.
 ::::::
 
 
+:::{rubric} Layout
+:::
+
 ::::::{sd-row}
 :::::{sd-item}
 {hyper}`https://example.org {type=shield,label=Read}`
@@ -370,8 +616,8 @@ Text input also accepts Unicode glyphs.
 {hyper}`H2 <https://example.org> {type=shield}`
 :::::
 :::::{sd-item}
-By default, `hyper` roles render as inline elements, so multiple ones are
-placed side by side, even when authored using line breaks.
+Because `hyper` roles render as inline elements, multiple instances can
+be placed side by side, even when written down spanning multiple lines.
 ::::{code} markdown
 
 {hyper}`H1 <https://example.org> {type=shield}`
@@ -385,7 +631,7 @@ continuation character.
 ::::::
 
 
-:::{rubric} Styling
+:::{rubric} Style
 :::
 
 About defining colors, an icon, and the style/shape of the shield.
@@ -463,19 +709,19 @@ The [`style`](#shield-style) option determines the style / shape of the shield.
 :::::
 ::::::
 
-
 :::::::
+
 
 
 ## Gallery
 
 A few more examples, about shortcuts and intersphinx linking.
 
-::::{dropdown} Shortcuts
+::::{dropdown} Shield Shortcuts
 :animate: fade-in-slide-down
 :open:
 
-Shortcut roles help saving keystrokes. Examples:
+Shield shortcut roles help saving a few keystrokes. Examples:
 `hyper-navigate`, `hyper-open`, `hyper-tutorial`, `hyper-read-more`,
 `hyper-readme-github`, `hyper-nb-colab`, `hyper-nb-binder`, `hyper-nb-github`. 
 
@@ -492,7 +738,7 @@ Shortcut roles help saving keystrokes. Examples:
 {hyper-nb-binder}`https://example.org`
 {hyper-nb-github}`https://example.org`
 
-::::{code} markdown
+:::{code} markdown
 
 {hyper-navigate}`https://example.org`
 {hyper-open}`https://example.org`
@@ -504,7 +750,62 @@ Shortcut roles help saving keystrokes. Examples:
 {hyper-nb-colab}`https://example.org`
 {hyper-nb-binder}`https://example.org`
 {hyper-nb-github}`https://example.org`
+:::
 ::::
+
+
+::::{dropdown} Buttons Everywhere
+:animate: fade-in-slide-down
+:open:
+
+Buttons in multiple colors, optionally outlined. \
+Colors: primary, secondary, success, danger, warning, info, light, dark, muted
+
+{hyper}`primary <https://example.org> {type=button,color=primary}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary}`
+{hyper}`success <https://example.org> {type=button,color=success}`
+{hyper}`danger <https://example.org> {type=button,color=danger}`
+{hyper}`warning <https://example.org> {type=button,color=warning}`
+{hyper}`info <https://example.org> {type=button,color=info}`
+{hyper}`light <https://example.org> {type=button,color=light}`
+{hyper}`dark <https://example.org> {type=button,color=dark}`
+{hyper}`muted <https://example.org> {type=button,color=muted}`
+
+{hyper}`primary <https://example.org> {type=button,color=primary,outline=true}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary,outline=true}`
+{hyper}`success <https://example.org> {type=button,color=success,outline=true}`
+{hyper}`danger <https://example.org> {type=button,color=danger,outline=true}`
+{hyper}`warning <https://example.org> {type=button,color=warning,outline=true}`
+{hyper}`info <https://example.org> {type=button,color=info,outline=true}`
+{hyper}`light <https://example.org> {type=button,color=light,outline=true}`
+{hyper}`dark <https://example.org> {type=button,color=dark,outline=true}`
+{hyper}`muted <https://example.org> {type=button,color=muted,outline=true}`
+
+:::{code} markdown
+
+{hyper}`primary <https://example.org> {type=button,color=primary}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary}`
+{hyper}`success <https://example.org> {type=button,color=success}`
+{hyper}`danger <https://example.org> {type=button,color=danger}`
+{hyper}`warning <https://example.org> {type=button,color=warning}`
+{hyper}`info <https://example.org> {type=button,color=info}`
+{hyper}`light <https://example.org> {type=button,color=light}`
+{hyper}`dark <https://example.org> {type=button,color=dark}`
+{hyper}`muted <https://example.org> {type=button,color=muted}`
+
+{hyper}`primary <https://example.org> {type=button,color=primary,outline=true}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary,outline=true}`
+{hyper}`success <https://example.org> {type=button,color=success,outline=true}`
+{hyper}`danger <https://example.org> {type=button,color=danger,outline=true}`
+{hyper}`warning <https://example.org> {type=button,color=warning,outline=true}`
+{hyper}`info <https://example.org> {type=button,color=info,outline=true}`
+{hyper}`light <https://example.org> {type=button,color=light,outline=true}`
+{hyper}`dark <https://example.org> {type=button,color=dark,outline=true}`
+{hyper}`muted <https://example.org> {type=button,color=muted,outline=true}`
+:::
+
+::::
+
 
 ::::{dropdown} Intersphinx across the board
 :animate: fade-in-slide-down
@@ -554,7 +855,8 @@ There are some flaws here yet, see backlog below.
 
 :::{todo}
 There are a few errors in here: `sd:index`, `sd:badges_buttons`, and
-`doc:badges_buttons` can't be resolved well.
+`doc:badges_buttons` can't be resolved well. See "Intersphinx across
+the board".
 :::
 :::{todo}
 Link label resolution does not work yet with project-local links, e.g.
