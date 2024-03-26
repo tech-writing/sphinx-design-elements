@@ -3,10 +3,11 @@
         <title>
             Heading
         <paragraph>
-            :Text:
+            :Badge:
             
-            <reference refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
-                Technical advancements in Sphinx
+            <reference classes="sd-sphinx-override sd-badge sd-outline-primary sd-text-primary" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                <inline>
+                    Technical advancements in Sphinx
         <paragraph>
             :Button:
             
@@ -18,3 +19,8 @@
             
             <reference reftitle="Technical advancements in Sphinx" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
                 <image alt="Technical advancements in Sphinx" candidates="{'?': 'https://img.shields.io/badge/Navigate%20to-Technical%20advancements%20in%20Sphinx-blue'}" uri="https://img.shields.io/badge/Navigate%20to-Technical%20advancements%20in%20Sphinx-blue">
+        <paragraph>
+            :Text:
+            
+            <reference refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                Technical advancements in Sphinx

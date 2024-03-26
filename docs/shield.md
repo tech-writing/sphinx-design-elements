@@ -9,7 +9,8 @@ A component to render badges through [Shields.io], with or without links,
 and optional parameterization. It implements the Sphinx directive `shield`.
 
 
-## Details
+(shield-options)=
+## Options
 
 The `shield` directive supports the options provided by [Shields.io Static Badges].
 
@@ -644,7 +645,17 @@ In MyST, indirect references are defined by, for example:
 :::::::
 
 
+## Backlog
+
+:::{todo}
+Provide style presets, like the shortcut `hyper` roles, or how
+[markdown-badges] defines them.
+:::
+
+
+
 [icon slugs]: https://github.com/simple-icons/simple-icons/blob/master/slugs.md
+[markdown-badges]: https://github.com/Ileriayo/markdown-badges
 [Shields.io]: https://shields.io/
 [Shields.io Logos]: https://shields.io/docs/logos
 [Shields.io Static Badges]: https://shields.io/badges/static-badge

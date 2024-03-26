@@ -1,6 +1,6 @@
 (tag-role)=
 
-# `tag(s)` role
+# Tag
 
 
 ## About
