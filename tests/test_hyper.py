@@ -6,6 +6,12 @@ from sphinx_pytest.plugin import CreateDoctree
 from tests.util import render_reference
 
 
+def test_hyper_unknown_type(render):
+    with pytest.raises(NotImplementedError) as ex:
+        render("{hyper}`foobar {type=foobar}`")
+    assert ex.match(re.escape("Hyperref type not implemented: foobar.Viable choices: ['button', 'shield']"))
+
+
 def test_hyper_http_url_valid(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`https://example.org`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
@@ -141,7 +147,39 @@ def test_hyper_shield_open(render):
     )
 
 
-def test_hyper_unknown_type(render):
-    with pytest.raises(NotImplementedError) as ex:
-        render("{hyper}`foobar {type=foobar}`")
-    assert ex.match(re.escape("Hyperref type not implemented: foobar.Viable choices: ['shield']"))
+def test_hyper_button_basic(render):
+    content = """
+{hyper}`https://example.org {type=button}`
+"""
+    assert (
+        render(content)
+        == """
+<reference classes="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary" refuri="https://example.org">
+    <inline>
+        Example Domain
+""".lstrip()
+    )
+
+
+def test_hyper_button_with_icon(render):
+    content = """
+{hyper}`https://example.org {type=button,icon=octicon:report}`
+"""
+    text = render(content)
+
+    assert '<raw format="html"' in text
+    assert '<svg version="1.1"' in text
+    assert "example.org" in text
+    assert "Example Domain" in text
+
+
+def test_hyper_button_icon_only(render):
+    content = """
+{hyper}`https://example.org {type=button,icon=octicon:report,notext=true}`
+"""
+    text = render(content)
+
+    assert '<raw format="html"' in text
+    assert '<svg version="1.1"' in text
+    assert "example.org" in text
+    assert "Example Domain" not in text
