@@ -12,6 +12,7 @@ orphan: true
   extracted HTML pages, so that subsequent invocations do not need to
   extract titles over and over again.
 - shield: Derive fundamental implementation from [sphinx_toolbox.shields]?
+- https://chrisholdgraf.com/blog/2023/social-directive/
 
 
 [sphinx_toolbox.shields]: https://github.com/sphinx-toolbox/sphinx-toolbox/blob/master/sphinx_toolbox/shields.py

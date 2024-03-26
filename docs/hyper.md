@@ -42,6 +42,11 @@ linking capabilities.
     provides an array of options to present hyperlinks differently. Hyper
     currently supports:
 
+    :::{rubric} Badge
+    :::
+    The {ref}`hyper-badge` Hyper renders hyperlinks using the
+    {ref}`bdg-* <sd:badges>` roles from [](inv:sd#index).
+
     :::{rubric} Button
     :::
     The {ref}`hyper-button` Hyper renders hyperlinks using the
@@ -61,14 +66,17 @@ defined using the markup outlined below.
 
 ::::{card}
 
-:Text:
-    {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {short-title=true}`
+:Badge:
+    {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=badge,outline=true,short-title=true}`
 
 :Button:
     {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=button,outline=true,short-title=true}`
 
 :Shield:
     {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=shield,label=Navigate to,short-title=true}`
+
+:Text:
+    {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {short-title=true}`
 
 ::::
 
@@ -87,15 +95,15 @@ Currently only works with MyST.
 reStructuredText is not supported yet, but support can be added.
 :::
 
+(hyper-basics)=
+:::{rubric} Fundamentals
+:::
 The `hyper` role provides a few configuration options, 
 mimicking and expanding `{ref}`.
 
 :::::::{sd-table}
 :widths: 3 9
 :row-class: col-compact bottom-margin-generous
-
-:::{rubric} Fundamentals
-:::
 
 ::::::{sd-row}
 :::::{sd-item} **Item**
@@ -233,12 +241,171 @@ In MyST, indirect references are defined by, for example:
 The `hyper` role provides a few rendering variants.
 
 
+(hyper-badge)=
+### Badge
+
+Adding the option `{type=badge}` renders the hyperlink using a badge based
+on the sphinx-design [`bdg-*`](inv:sd#badges) roles.
+
+:::{rubric} Options
+:::
+
+color
+: Set the color of the button (background and font).
+  One of the semantic color names: `primary`, `secondary`, `success`, `danger`,
+  `warning`, `info`, `light`, `dark`, `muted`.
+  The default value is `primary`.
+
+outline
+: Display button in outlined color style variant. Use `outline=true`
+  to toggle that option.
+
+
+:::{rubric} Fundamentals
+:::
+
+:::::::{sd-table}
+:widths: 3 9
+:row-class: col-compact bottom-margin-generous
+
+::::::{sd-row}
+:::::{sd-item} **Item**
+:::::
+:::::{sd-item} **Description and Syntax**
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=badge}`
+:::::
+:::::{sd-item}
+A basic badge hyperlink for URLs, without any options.
+::::{code} markdown
+
+{hyper}`https://example.org {type=badge}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`shield-directive {type=badge}` \
+{hyper}`Shield badges <shield-directive> {type=badge}`
+:::::
+:::::{sd-item}
+Use project-local references.
+::::{code} markdown
+
+{hyper}`shield-directive {type=badge}` \
+{hyper}`Shield badges <shield-directive> {type=badge}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`sd:sd-cards {type=badge}` \
+{hyper}`Card Layouts <sd:sd-cards> {type=badge}`
+:::::
+:::::{sd-item}
+Use intersphinx references.
+::::{code} markdown
+
+{hyper}`sd:sd-cards {type=badge}` \
+{hyper}`Card Layouts <sd:sd-cards> {type=badge}`
+::::
+:::::
+::::::
+
+
+:::{rubric} Layout
+:::
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`1 <https://example.org> {type=badge,outline=true}`
+{hyper}`2 <https://example.org> {type=badge,outline=true}`
+{hyper}`3 <https://example.org> {type=badge,outline=true}`
+:::::
+:::::{sd-item}
+Because `hyper` roles render as inline elements, like `bdg-*` badges,
+multiple instances can be placed side by side, even when written down
+spanning multiple lines.
+::::{code} markdown
+
+{hyper}`1 <https://example.org> {type=badge,outline=true}`
+{hyper}`2 <https://example.org> {type=badge,outline=true}`
+{hyper}`3 <https://example.org> {type=badge,outline=true}`
+::::
+:::{tip}
+For purposely applying line breaks, use the backslash `\` as line
+continuation character.
+:::
+:::::
+::::::
+
+
+:::{rubric} Style
+:::
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=badge,color=info}`
+:::::
+:::::{sd-item}
+The `color` option determines the color.
+::::{code} markdown
+
+{hyper}`https://example.org {type=badge,color=info}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=badge,outline=true}`
+:::::
+:::::{sd-item}
+The `outline` option draws the badge in a different style.
+::::{code} markdown
+
+{hyper}`https://example.org {type=badge,outline=true}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`🌻 Read More 🍀 <https://example.org> {type=badge,outline=true}`
+:::::
+:::::{sd-item}
+Text input accepts Unicode glyphs.
+::::{code} markdown
+
+{hyper}`🌻 Read More 🍀 <https://example.org> {type=badge,outline=true}`
+::::
+:::::
+::::::
+
+
+:::::::
+
+
 (hyper-button)=
 ### Button
 
-Adding the option `{type=button}` renders the hyperlink using a badge based
-on the sphinx-design [`button`](inv:sd#buttons) directive implementation, it
+Adding the option `{type=button}` renders the hyperlink using a button based
+on the sphinx-design [`button`](inv:sd#buttons) directive, it
 accepts the same options, and the additional `icon` option.
+
+:::{rubric} Options
+:::
 
 ref-type (`button-ref` only)
 : Type of reference to use; `any` (default), `ref`, `doc`, or `myst`
@@ -282,6 +449,9 @@ shadow
 class
 : Additional CSS classes.
 
+
+:::{rubric} Fundamentals
+:::
 
 :::::::{sd-table}
 :widths: 3 9
@@ -398,6 +568,10 @@ line breaks.
 {hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
 {hyper}`https://example.org {type=button,icon=octicon:rocket,notext=true}`
 ::::
+:::{tip}
+For purposely applying line breaks, use the backslash `\` as line
+continuation character.
+:::
 :::::
 ::::::
 
@@ -445,6 +619,20 @@ Use `class` and `tooltip` options.
 
 ::::::{sd-row}
 :::::{sd-item}
+{hyper}`🌻 Read More 🍀 <https://example.org> {type=button}`
+:::::
+:::::{sd-item}
+Text input accepts Unicode glyphs.
+::::{code} markdown
+
+{hyper}`🌻 Read More 🍀 <https://example.org> {type=button}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
 {hyper}`Read More <https://example.org> {type=button,icon=octicon:report}` \
 {hyper}`Read More <https://example.org> {type=button,color=info,outline=true,icon=material-outlined:emoji_objects;3em;sd-text-primary}`
 :::::
@@ -468,6 +656,17 @@ The value of the `icon` option translates to the syntax of an {ref}`inline icon
 
 Adding the option `{type=shield}` renders the hyperlink using a badge based
 on the [`shield`](#shield-directive) directive implementation.
+
+
+:::{rubric} Options
+:::
+
+Please refer to the corresponding [`shield` options](#shield-options), in order
+to learn about how this component can be configured.
+
+
+:::{rubric} Fundamentals
+:::
 
 :::::::{sd-table}
 :widths: 3 9
@@ -598,30 +797,18 @@ or the `message` option.
 
 ::::::{sd-row}
 :::::{sd-item}
-{hyper}`https://example.org {type=shield,label=🌻 Read,message=More 🍀}`
-:::::
-:::::{sd-item}
-Text input also accepts Unicode glyphs.
-::::{code} markdown
-
-{hyper}`https://example.org {type=shield,label=🌻 Read,message=More 🍀}`
-::::
-:::::
-::::::
-
-
-::::::{sd-row}
-:::::{sd-item}
-{hyper}`H1 <https://example.org> {type=shield}`
-{hyper}`H2 <https://example.org> {type=shield}`
+{hyper}`1 <https://example.org> {type=shield}`
+{hyper}`2 <https://example.org> {type=shield}`
+{hyper}`3 <https://example.org> {type=shield}`
 :::::
 :::::{sd-item}
 Because `hyper` roles render as inline elements, multiple instances can
 be placed side by side, even when written down spanning multiple lines.
 ::::{code} markdown
 
-{hyper}`H1 <https://example.org> {type=shield}`
-{hyper}`H2 <https://example.org> {type=shield}`
+{hyper}`1 <https://example.org> {type=shield}`
+{hyper}`2 <https://example.org> {type=shield}`
+{hyper}`3 <https://example.org> {type=shield}`
 ::::
 :::{tip}
 For purposely applying line breaks, use the backslash `\` as line
@@ -675,6 +862,20 @@ the `color` option can be used as an alias for `message-color`.
 
 ::::::{sd-row}
 :::::{sd-item}
+{hyper}`https://example.org {type=shield,label=🌻 Read,message=More 🍀}`
+:::::
+:::::{sd-item}
+Text input accepts Unicode glyphs.
+::::{code} markdown
+
+{hyper}`https://example.org {type=shield,label=🌻 Read,message=More 🍀}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
 {hyper}`CrateDB <https://cratedb.com> {type=shield,color=gray,logo=CrateDB}`
 :::::
 :::::{sd-item}
@@ -712,10 +913,121 @@ The [`style`](#shield-style) option determines the style / shape of the shield.
 :::::::
 
 
+(hyper-text)=
+### Text
+
+The textual output variant and its features are outlined at the
+[](hyper-basics) section.
+
 
 ## Gallery
 
 A few more examples, about shortcuts and intersphinx linking.
+
+
+::::{dropdown} Badges Everywhere
+:animate: fade-in-slide-down
+:open:
+
+Badges in multiple colors, optionally outlined.
+
+{hyper}`primary <https://example.org> {type=badge,color=primary}`
+{hyper}`secondary <https://example.org> {type=badge,color=secondary}`
+{hyper}`success <https://example.org> {type=badge,color=success}`
+{hyper}`danger <https://example.org> {type=badge,color=danger}`
+{hyper}`warning <https://example.org> {type=badge,color=warning}`
+{hyper}`info <https://example.org> {type=badge,color=info}`
+{hyper}`light <https://example.org> {type=badge,color=light}`
+{hyper}`dark <https://example.org> {type=badge,color=dark}`
+{hyper}`muted <https://example.org> {type=badge,color=muted}`
+
+{hyper}`primary <https://example.org> {type=badge,color=primary,outline=true}`
+{hyper}`secondary <https://example.org> {type=badge,color=secondary,outline=true}`
+{hyper}`success <https://example.org> {type=badge,color=success,outline=true}`
+{hyper}`danger <https://example.org> {type=badge,color=danger,outline=true}`
+{hyper}`warning <https://example.org> {type=badge,color=warning,outline=true}`
+{hyper}`info <https://example.org> {type=badge,color=info,outline=true}`
+{hyper}`light <https://example.org> {type=badge,color=light,outline=true}`
+{hyper}`dark <https://example.org> {type=badge,color=dark,outline=true}`
+{hyper}`muted <https://example.org> {type=badge,color=muted,outline=true}`
+
+:::{code} markdown
+
+{hyper}`primary <https://example.org> {type=badge,color=primary}`
+{hyper}`secondary <https://example.org> {type=badge,color=secondary}`
+{hyper}`success <https://example.org> {type=badge,color=success}`
+{hyper}`danger <https://example.org> {type=badge,color=danger}`
+{hyper}`warning <https://example.org> {type=badge,color=warning}`
+{hyper}`info <https://example.org> {type=badge,color=info}`
+{hyper}`light <https://example.org> {type=badge,color=light}`
+{hyper}`dark <https://example.org> {type=badge,color=dark}`
+{hyper}`muted <https://example.org> {type=badge,color=muted}`
+
+{hyper}`primary <https://example.org> {type=badge,color=primary,outline=true}`
+{hyper}`secondary <https://example.org> {type=badge,color=secondary,outline=true}`
+{hyper}`success <https://example.org> {type=badge,color=success,outline=true}`
+{hyper}`danger <https://example.org> {type=badge,color=danger,outline=true}`
+{hyper}`warning <https://example.org> {type=badge,color=warning,outline=true}`
+{hyper}`info <https://example.org> {type=badge,color=info,outline=true}`
+{hyper}`light <https://example.org> {type=badge,color=light,outline=true}`
+{hyper}`dark <https://example.org> {type=badge,color=dark,outline=true}`
+{hyper}`muted <https://example.org> {type=badge,color=muted,outline=true}`
+:::
+
+::::
+
+
+::::{dropdown} Buttons Everywhere
+:animate: fade-in-slide-down
+:open:
+
+Buttons in multiple colors, optionally outlined.
+
+{hyper}`primary <https://example.org> {type=button,color=primary}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary}`
+{hyper}`success <https://example.org> {type=button,color=success}`
+{hyper}`danger <https://example.org> {type=button,color=danger}`
+{hyper}`warning <https://example.org> {type=button,color=warning}`
+{hyper}`info <https://example.org> {type=button,color=info}`
+{hyper}`light <https://example.org> {type=button,color=light}`
+{hyper}`dark <https://example.org> {type=button,color=dark}`
+{hyper}`muted <https://example.org> {type=button,color=muted}`
+
+{hyper}`primary <https://example.org> {type=button,color=primary,outline=true}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary,outline=true}`
+{hyper}`success <https://example.org> {type=button,color=success,outline=true}`
+{hyper}`danger <https://example.org> {type=button,color=danger,outline=true}`
+{hyper}`warning <https://example.org> {type=button,color=warning,outline=true}`
+{hyper}`info <https://example.org> {type=button,color=info,outline=true}`
+{hyper}`light <https://example.org> {type=button,color=light,outline=true}`
+{hyper}`dark <https://example.org> {type=button,color=dark,outline=true}`
+{hyper}`muted <https://example.org> {type=button,color=muted,outline=true}`
+
+:::{code} markdown
+
+{hyper}`primary <https://example.org> {type=button,color=primary}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary}`
+{hyper}`success <https://example.org> {type=button,color=success}`
+{hyper}`danger <https://example.org> {type=button,color=danger}`
+{hyper}`warning <https://example.org> {type=button,color=warning}`
+{hyper}`info <https://example.org> {type=button,color=info}`
+{hyper}`light <https://example.org> {type=button,color=light}`
+{hyper}`dark <https://example.org> {type=button,color=dark}`
+{hyper}`muted <https://example.org> {type=button,color=muted}`
+
+{hyper}`primary <https://example.org> {type=button,color=primary,outline=true}`
+{hyper}`secondary <https://example.org> {type=button,color=secondary,outline=true}`
+{hyper}`success <https://example.org> {type=button,color=success,outline=true}`
+{hyper}`danger <https://example.org> {type=button,color=danger,outline=true}`
+{hyper}`warning <https://example.org> {type=button,color=warning,outline=true}`
+{hyper}`info <https://example.org> {type=button,color=info,outline=true}`
+{hyper}`light <https://example.org> {type=button,color=light,outline=true}`
+{hyper}`dark <https://example.org> {type=button,color=dark,outline=true}`
+{hyper}`muted <https://example.org> {type=button,color=muted,outline=true}`
+:::
+
+::::
+
 
 ::::{dropdown} Shield Shortcuts
 :animate: fade-in-slide-down
@@ -723,7 +1035,7 @@ A few more examples, about shortcuts and intersphinx linking.
 
 Shield shortcut roles help saving a few keystrokes. Examples:
 `hyper-navigate`, `hyper-open`, `hyper-tutorial`, `hyper-read-more`,
-`hyper-readme-github`, `hyper-nb-colab`, `hyper-nb-binder`, `hyper-nb-github`. 
+`hyper-readme-github`, `hyper-nb-colab`, `hyper-nb-binder`, `hyper-nb-github`.
 
 ---
 
@@ -751,59 +1063,6 @@ Shield shortcut roles help saving a few keystrokes. Examples:
 {hyper-nb-binder}`https://example.org`
 {hyper-nb-github}`https://example.org`
 :::
-::::
-
-
-::::{dropdown} Buttons Everywhere
-:animate: fade-in-slide-down
-:open:
-
-Buttons in multiple colors, optionally outlined. \
-Colors: primary, secondary, success, danger, warning, info, light, dark, muted
-
-{hyper}`primary <https://example.org> {type=button,color=primary}`
-{hyper}`secondary <https://example.org> {type=button,color=secondary}`
-{hyper}`success <https://example.org> {type=button,color=success}`
-{hyper}`danger <https://example.org> {type=button,color=danger}`
-{hyper}`warning <https://example.org> {type=button,color=warning}`
-{hyper}`info <https://example.org> {type=button,color=info}`
-{hyper}`light <https://example.org> {type=button,color=light}`
-{hyper}`dark <https://example.org> {type=button,color=dark}`
-{hyper}`muted <https://example.org> {type=button,color=muted}`
-
-{hyper}`primary <https://example.org> {type=button,color=primary,outline=true}`
-{hyper}`secondary <https://example.org> {type=button,color=secondary,outline=true}`
-{hyper}`success <https://example.org> {type=button,color=success,outline=true}`
-{hyper}`danger <https://example.org> {type=button,color=danger,outline=true}`
-{hyper}`warning <https://example.org> {type=button,color=warning,outline=true}`
-{hyper}`info <https://example.org> {type=button,color=info,outline=true}`
-{hyper}`light <https://example.org> {type=button,color=light,outline=true}`
-{hyper}`dark <https://example.org> {type=button,color=dark,outline=true}`
-{hyper}`muted <https://example.org> {type=button,color=muted,outline=true}`
-
-:::{code} markdown
-
-{hyper}`primary <https://example.org> {type=button,color=primary}`
-{hyper}`secondary <https://example.org> {type=button,color=secondary}`
-{hyper}`success <https://example.org> {type=button,color=success}`
-{hyper}`danger <https://example.org> {type=button,color=danger}`
-{hyper}`warning <https://example.org> {type=button,color=warning}`
-{hyper}`info <https://example.org> {type=button,color=info}`
-{hyper}`light <https://example.org> {type=button,color=light}`
-{hyper}`dark <https://example.org> {type=button,color=dark}`
-{hyper}`muted <https://example.org> {type=button,color=muted}`
-
-{hyper}`primary <https://example.org> {type=button,color=primary,outline=true}`
-{hyper}`secondary <https://example.org> {type=button,color=secondary,outline=true}`
-{hyper}`success <https://example.org> {type=button,color=success,outline=true}`
-{hyper}`danger <https://example.org> {type=button,color=danger,outline=true}`
-{hyper}`warning <https://example.org> {type=button,color=warning,outline=true}`
-{hyper}`info <https://example.org> {type=button,color=info,outline=true}`
-{hyper}`light <https://example.org> {type=button,color=light,outline=true}`
-{hyper}`dark <https://example.org> {type=button,color=dark,outline=true}`
-{hyper}`muted <https://example.org> {type=button,color=muted,outline=true}`
-:::
-
 ::::
 
 

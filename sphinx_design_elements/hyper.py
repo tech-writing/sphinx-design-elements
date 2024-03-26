@@ -9,7 +9,7 @@ from docutils.nodes import Node, system_message, unescape
 from docutils.parsers.rst.states import Inliner
 from myst_parser.mocking import MockInliner
 from sphinx.application import Sphinx
-from sphinx.jinja2glue import _tobool
+from sphinx.jinja2glue import _tobool, _toint
 from sphinx.roles import AnyXRefRole
 from sphinx.util.docutils import SphinxRole
 
@@ -53,6 +53,7 @@ class HyperRefRole(AnyXRefRole):
     """
 
     special_types = [
+        "badge",
         "button",
         "shield",
     ]
@@ -201,15 +202,23 @@ class HyperRefRole(AnyXRefRole):
         argument0 = ""
         content = ""
 
-        if type_ == "button":
+        if type_ == "badge":
+            type_ = self.sd_linkreftype("bdg")
+            color = self.ref_options.setdefault("color", "primary")
+            outline = _tobool(self.ref_options.pop("outline", False))
+            suffix = ""
+            if outline:
+                suffix = "-line"
+            # {bdg-link-primary-line}`explicit title <https://example.com>`
+            snippet = f"{{{type_}-{color}{suffix}}}`{self.title} <{self.target}>`"
+            return self.render_snippet(snippet)
+
+        elif type_ == "button":
             self.ref_options.setdefault("color", "primary")
             no_text = _tobool(self.ref_options.pop("notext", False))
 
             argument0 = self.target
-            if self.srh.is_url():
-                type_ = "button-link"
-            else:
-                type_ = "button-ref"
+            type_ = self.sd_linkreftype("button")
             if self.title and not no_text:
                 content = self.title
 
@@ -238,6 +247,20 @@ class HyperRefRole(AnyXRefRole):
         snippet = f":::{{{type_}}} {argument0}\n{self.directive_options}{content}\n:::"
         return self.render_snippet(snippet)
 
+    def sd_linkreftype(self, prefix: str):
+        """
+        Compute an element identifier label for sphinx-design.
+        Examples:
+
+        - bdg-link-primary, bdg-ref-primary
+        - button-link, button-ref
+        """
+        if self.srh.is_url():
+            type_ = "link"
+        else:
+            type_ = "ref"
+        return f"{prefix}-{type_}"
+
     def render_snippet(self, snippet: str) -> Tuple[List[nodes.Node], List[nodes.system_message]]:
         """
         Render a MyST snippet.
@@ -258,7 +281,7 @@ class HyperRefRole(AnyXRefRole):
         """
         items = self.ref_options.copy()
         for key, value in items.items():
-            if not value or _tobool(value):
+            if not value or (not _toint(value) and _tobool(value) is True):
                 items[key] = True
         return "---\n" + yaml.dump(items) + "---\n"
 

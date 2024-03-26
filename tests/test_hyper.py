@@ -9,7 +9,7 @@ from tests.util import render_reference
 def test_hyper_unknown_type(render):
     with pytest.raises(NotImplementedError) as ex:
         render("{hyper}`foobar {type=foobar}`")
-    assert ex.match(re.escape("Hyperref type not implemented: foobar.Viable choices: ['button', 'shield']"))
+    assert ex.match(re.escape("Hyperref type not implemented: foobar.Viable choices: ['badge', 'button', 'shield']"))
 
 
 def test_hyper_http_url_valid(sphinx_doctree_no_tr: CreateDoctree):
@@ -183,3 +183,19 @@ def test_hyper_button_icon_only(render):
     assert '<svg version="1.1"' in text
     assert "example.org" in text
     assert "Example Domain" not in text
+
+
+def test_hyper_badge(render):
+    content = """
+{hyper}`https://example.org {type=badge}`
+"""
+    text = render(content)
+
+    assert (
+        text
+        == """
+<reference classes="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary" refuri="https://example.org">
+    <inline>
+        Example Domain
+""".lstrip()
+    )
