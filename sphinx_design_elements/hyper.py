@@ -55,6 +55,7 @@ class HyperRefRole(AnyXRefRole):
     special_types = [
         "badge",
         "button",
+        "card",
         "shield",
     ]
 
@@ -66,6 +67,7 @@ class HyperRefRole(AnyXRefRole):
     default_options: Dict[str, str] = {}
 
     def __init__(self, app: Sphinx, *args, **kwargs):
+        self.with_container = False
         # Any number of options for the reference role.
         self.ref_options: Dict[str, Any] = {}
         self.system_messages: List[nodes.system_message] = []
@@ -82,6 +84,8 @@ class HyperRefRole(AnyXRefRole):
         options: Union[Dict, None] = None,
         content: Union[List[str], None] = None,
     ) -> Tuple[List[Node], List[system_message]]:
+
+        self.with_container = False
 
         self.rawtext = rawtext
         self.text = unescape(text)
@@ -188,9 +192,7 @@ class HyperRefRole(AnyXRefRole):
 
         type_ = self.ref_options.get("type")
         if type_ not in self.special_types:
-            raise NotImplementedError(
-                f"Hyperref type not implemented: {type_}." f"Viable choices: {self.special_types}"
-            )
+            raise NotImplementedError(f"Hyperref type not implemented: {type_}. Viable choices: {self.special_types}")
         del self.ref_options["type"]
 
         tpl = {
@@ -201,6 +203,7 @@ class HyperRefRole(AnyXRefRole):
         # Argument and content of directive.
         argument0 = ""
         content = ""
+        no_text = _tobool(self.ref_options.pop("notext", False))
 
         if type_ == "badge":
             type_ = self.sd_linkreftype("bdg")
@@ -215,17 +218,50 @@ class HyperRefRole(AnyXRefRole):
 
         elif type_ == "button":
             self.ref_options.setdefault("color", "primary")
-            no_text = _tobool(self.ref_options.pop("notext", False))
 
             argument0 = self.target
             type_ = self.sd_linkreftype("button")
             if self.title and not no_text:
                 content = self.title
 
-            if icon := self.ref_options.pop("icon", None):
-                icon_type, icon_options = icon.split(":")
-                icon_myst = f"{{{icon_type}}}`{icon_options}`"
-                content = f"{icon_myst} {content}"
+            if icon := self.pop_icon():
+                content = f"{icon} {content}"
+
+        elif type_ == "card":
+            """
+            :::{card} Card Title
+            Header
+            ^^^
+            Card content
+            +++
+            Footer
+            :::
+            """
+
+            self.with_container = True
+            icon = self.pop_icon()
+
+            fragments = []
+            if "title" in self.ref_options:
+                argument0 = self.ref_options.pop("title")
+            if "header" in self.ref_options:
+                fragments += [self.ref_options.pop("header")]
+                fragments += ["^^^"]
+            body = ""
+            if icon:
+                body += icon + " "
+            if "content" in self.ref_options:
+                body += self.ref_options.pop("content")
+            elif self.title and not no_text:
+                body += self.title
+            fragments += [body]
+            if "footer" in self.ref_options:
+                fragments += ["+++"]
+                fragments += [self.ref_options.pop("footer")]
+            content = "\n".join(fragments)
+
+            self.ref_options.setdefault("link", self.target)
+            self.ref_options.setdefault("link-type", link_type(self.ref_options.get("link")))
 
         elif type_ == "shield":
             self.ref_options.setdefault("message", self.title or self.target)
@@ -242,10 +278,16 @@ class HyperRefRole(AnyXRefRole):
             self.ref_options.setdefault("link-title", self.ref_options["message"])
 
         else:
-            raise NotImplementedError(f"Hyper type not implemented: {type_}")
+            raise NotImplementedError(f"Hyperref type not implemented: {type_}. Viable choices: {self.special_types}")
 
         snippet = f":::{{{type_}}} {argument0}\n{self.directive_options}{content}\n:::"
         return self.render_snippet(snippet)
+
+    def pop_icon(self):
+        if icon := self.ref_options.pop("icon", None):
+            icon_type, icon_options = icon.split(":")
+            return f"{{{icon_type}}}`{icon_options}`"
+        return None
 
     def sd_linkreftype(self, prefix: str):
         """
@@ -266,7 +308,7 @@ class HyperRefRole(AnyXRefRole):
         Render a MyST snippet.
         """
         directive_nodes, _ = self.inliner.parse_block(  # type: ignore[attr-defined]
-            text=snippet, lineno=self.lineno, memo=self, parent=self.inliner.parent  # type: ignore[attr-defined]
+            text=snippet, lineno=self.lineno, memo=self, parent=self.inliner.parent, with_container=self.with_container  # type: ignore[attr-defined]
         )
         if not directive_nodes:
             return [], self.system_messages
