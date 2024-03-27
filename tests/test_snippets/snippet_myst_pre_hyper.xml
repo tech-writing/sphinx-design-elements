@@ -15,6 +15,15 @@
                 <inline>
                     Technical advancements in Sphinx
         <paragraph>
+            :Card:
+            
+            <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+                <container classes="sd-card-body" design_component="card-body" is_div="True">
+                    <paragraph classes="sd-card-text">
+                        Technical advancements in Sphinx
+                <PassthroughTextElement>
+                    <reference classes="sd-stretched-link" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+        <paragraph>
             :Shield:
             
             <reference reftitle="Technical advancements in Sphinx" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">

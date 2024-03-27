@@ -92,9 +92,9 @@ def sphinx_builder(tmp_path: Path, make_app, monkeypatch):
 def render(sphinx_builder: Callable[..., SphinxBuilder]):
     roles._roles.clear()
 
-    def do(content):
+    def do(content, with_container: bool = False):
         builder = sphinx_builder()
-        return render_reference_builder(builder, content)
+        return render_reference_builder(builder, content, with_container=with_container)
 
     return do
 
@@ -105,7 +105,7 @@ def clean_doctree(doctree, pop_doc_attrs=("translation_progress",)):
     return doctree
 
 
-def render_reference_builder(builder: SphinxBuilder, content: str):
+def render_reference_builder(builder: SphinxBuilder, content: str, with_container: bool = False):
     """Test snippets written in MyST Markdown (after post-transforms)."""
     from tests.test_snippets import write_assets
 
@@ -114,12 +114,17 @@ def render_reference_builder(builder: SphinxBuilder, content: str):
     write_assets(builder.src_path)
     builder.build()
 
-    text = find_reference(clean_doctree(builder.get_doctree("index", post_transforms=True))).pformat()
+    text = find_reference(
+        clean_doctree(builder.get_doctree("index", post_transforms=True)), with_container=with_container
+    ).pformat()
     return text
 
 
-def find_reference(node: nodes.Node):
-    results = list(node.findall(lambda _node: isinstance(_node, (nodes.reference, addnodes.pending_xref))))
+def find_reference(node: nodes.Node, with_container: bool = False):
+    constraint = (nodes.reference, addnodes.pending_xref)
+    if with_container:
+        constraint = (nodes.container,)
+    results = list(node.findall(lambda _node: isinstance(_node, constraint)))
     if results:
         return results[0]
     return node

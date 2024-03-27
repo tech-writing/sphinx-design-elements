@@ -86,7 +86,7 @@ def get_html_page_title(url: str) -> str:
 
 
 def parse_block_myst(
-    self: MockInliner, text: str, lineno: int, memo: Any, parent: nodes.Element
+    self: MockInliner, text: str, lineno: int, memo: Any, parent: nodes.Element, with_container: bool = False
 ) -> tuple[list[nodes.Node], list[nodes.system_message]]:
     """
     Parse the text and return a list of nodes.
@@ -100,7 +100,10 @@ def parse_block_myst(
             self._renderer.nested_render_text(text, lineno, inline=False)
 
     # Extract the reference node from the container paragraph node.
-    ref = container.next_node().next_node()
+    if with_container:
+        ref = container.next_node()
+    else:
+        ref = container.next_node().next_node()
     return [ref], []
 
 

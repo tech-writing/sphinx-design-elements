@@ -52,6 +52,11 @@ linking capabilities.
     The {ref}`hyper-button` Hyper renders hyperlinks using the
     {ref}`button <sd:buttons>` directive from [](inv:sd#index).
 
+    :::{rubric} Card
+    :::
+    The {ref}`hyper-card` Hyper renders hyperlinks using the
+    {ref}`card <sd:sd-cards>` directive from [](inv:sd#index).
+
     :::{rubric} Shield
     :::
     A {ref}`hyper-shield`-typed Hyper renders hyperlinks using
@@ -71,6 +76,9 @@ defined using the markup outlined below.
 
 :Button:
     {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=button,outline=true,short-title=true}`
+
+:Card:
+    {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=card,short-title=true}`
 
 :Shield:
     {hyper}`https://community.panodata.org/t/technical-advancements-in-sphinx/278 {type=shield,label=Navigate to,short-title=true}`
@@ -293,14 +301,14 @@ A basic badge hyperlink for URLs, without any options.
 ::::::{sd-row}
 :::::{sd-item}
 {hyper}`shield-directive {type=badge}` \
-{hyper}`Shield badges <shield-directive> {type=badge}`
+{hyper}`Shield Badges <shield-directive> {type=badge}`
 :::::
 :::::{sd-item}
 Use project-local references.
 ::::{code} markdown
 
 {hyper}`shield-directive {type=badge}` \
-{hyper}`Shield badges <shield-directive> {type=badge}`
+{hyper}`Shield Badges <shield-directive> {type=badge}`
 ::::
 :::::
 ::::::
@@ -484,14 +492,14 @@ A basic button hyperlink for URLs, without any options.
 ::::::{sd-row}
 :::::{sd-item}
 {hyper}`shield-directive {type=button}` \
-{hyper}`Shield badges <shield-directive> {type=button}`
+{hyper}`Shield Badges <shield-directive> {type=button}`
 :::::
 :::::{sd-item}
 Use project-local references.
 ::::{code} markdown
 
 {hyper}`shield-directive {type=button}` \
-{hyper}`Shield badges <shield-directive> {type=button}`
+{hyper}`Shield Badges <shield-directive> {type=button}`
 ::::
 :::::
 ::::::
@@ -643,6 +651,152 @@ The value of the `icon` option translates to the syntax of an {ref}`inline icon
 
 {hyper}`Read More <https://example.org> {type=button,icon=octicon:report}` \
 {hyper}`Read More <https://example.org> {type=button,color=info,outline=true,icon=material-outlined:emoji_objects;3em;sd-text-primary}`
+::::
+:::::
+::::::
+
+
+:::::::
+
+
+(hyper-card)=
+### Card
+
+Adding the option `{type=card}` renders the hyperlink using a card based
+on the sphinx-design [`card`](inv:sd#cards) directive, it
+accepts the same options, and the additional `icon` option.
+
+:::{rubric} Options
+:::
+
+The `card` Hyper understands the same options like offered by the `card`
+directive, see [](inv:sd#cards:options).
+
+
+:::::::{sd-table}
+:widths: 3 9
+:row-class: col-compact bottom-margin-generous
+
+::::::{sd-row}
+:::::{sd-item} **Item**
+:::::
+:::::{sd-item} **Description and Syntax**
+:::::
+::::::
+
+:::{rubric} Fundamentals
+:::
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=card}`
+:::::
+:::::{sd-item}
+A basic card hyperlink for URLs, without any options.
+::::{code} markdown
+
+{hyper}`https://example.org {type=card}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`shield-directive {type=card}` \
+{hyper}`Shield Badges <shield-directive> {type=card}`
+:::::
+:::::{sd-item}
+Use project-local references.
+::::{code} markdown
+
+{hyper}`shield-directive {type=card}` \
+{hyper}`Shield Badges <shield-directive> {type=card}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`sd:sd-cards {type=card}` \
+{hyper}`Card Layouts <sd:sd-cards> {type=card}`
+:::::
+:::::{sd-item}
+Use intersphinx references.
+::::{code} markdown
+
+{hyper}`sd:sd-cards {type=card}` \
+{hyper}`Card Layouts <sd:sd-cards> {type=card}`
+::::
+:::::
+::::::
+
+
+
+:::{rubric} Title, Header, Footer
+:::
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=card,title=title,header=header,footer=footer}`
+:::::
+:::::{sd-item}
+The `title`, `header`, and `footer` options directly translate to the
+corresponding slots of the card element.
+::::{code} markdown
+
+{hyper}`https://example.org {type=card,title=title,header=header,footer=footer}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`content <https://example.org> {type=card}` \
+{hyper}`https://example.org {type=card,content=content}`
+:::::
+:::::{sd-item}
+The value of the link title / label can be defined on behalf of the {ref}
+syntax, as usual, or by using the `content` option.
+::::{code} markdown
+
+{hyper}`content <https://example.org> {type=card}` \
+{hyper}`https://example.org {type=card,content=content}`
+::::
+:::::
+::::::
+
+
+:::{rubric} Style
+:::
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=card,shadow=md}`
+:::::
+:::::{sd-item}
+Shadows.
+::::{code} markdown
+
+{hyper}`https://example.org {type=card,shadow=md}`
+::::
+:::::
+::::::
+
+
+::::::{sd-row}
+:::::{sd-item}
+{hyper}`https://example.org {type=card,icon=octicon:rocket}` \
+{hyper}`https://example.org {type=card,icon=octicon:rocket;3em,notext=true,text-align=center}`
+:::::
+:::::{sd-item}
+Icons.
+::::{code} markdown
+
+{hyper}`https://example.org {type=card,icon=octicon:rocket}` \
+{hyper}`https://example.org {type=card,icon=octicon:rocket;3em,notext=true,text-align=center}`
 ::::
 :::::
 ::::::

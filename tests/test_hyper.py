@@ -9,7 +9,9 @@ from tests.util import render_reference
 def test_hyper_unknown_type(render):
     with pytest.raises(NotImplementedError) as ex:
         render("{hyper}`foobar {type=foobar}`")
-    assert ex.match(re.escape("Hyperref type not implemented: foobar.Viable choices: ['badge', 'button', 'shield']"))
+    assert ex.match(
+        re.escape("Hyperref type not implemented: foobar. Viable choices: ['badge', 'button', 'card', 'shield']")
+    )
 
 
 def test_hyper_http_url_valid(sphinx_doctree_no_tr: CreateDoctree):
@@ -198,4 +200,51 @@ def test_hyper_badge(render):
     <inline>
         Example Domain
 """.lstrip()
+    )
+
+
+def test_hyper_card_minimal(render):
+    content = """
+{hyper}`https://example.org {type=card}`
+"""
+    text = render(content, with_container=True)
+
+    assert (
+        text
+        == """
+<container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+    <container classes="sd-card-body" design_component="card-body" is_div="True">
+        <paragraph classes="sd-card-text">
+            Example Domain
+    <PassthroughTextElement>
+        <reference classes="sd-stretched-link" refuri="https://example.org">
+""".lstrip()  # noqa: E501
+    )
+
+
+def test_hyper_card_full(render):
+    content = """
+{hyper}`https://example.org {type=card,title=title,header=header,footer=footer}`
+"""
+    text = render(content, with_container=True)
+
+    assert (
+        text
+        == """
+<container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
+    <container classes="sd-card-header" design_component="card-header" is_div="True">
+        <paragraph classes="sd-card-text">
+            header
+    <container classes="sd-card-body" design_component="card-body" is_div="True">
+        <container classes="sd-card-title sd-font-weight-bold" design_component="card-title" is_div="True">
+            <PassthroughTextElement>
+                title
+        <paragraph classes="sd-card-text">
+            Example Domain
+    <container classes="sd-card-footer" design_component="card-footer" is_div="True">
+        <paragraph classes="sd-card-text">
+            footer
+    <PassthroughTextElement>
+        <reference classes="sd-stretched-link" refuri="https://example.org">
+""".lstrip()  # noqa: E501
     )
