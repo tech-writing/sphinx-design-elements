@@ -649,9 +649,28 @@ In MyST, indirect references are defined by, for example:
 
 :::{todo}
 Provide style presets, like the shortcut `hyper` roles, or how
-[markdown-badges] defines them.
+[markdown-badges] define them.
 :::
 
+:::{todo}
+Local shield badges? It's SVG anyway, right?
+[![](https://img.shields.io/badge/Read%20More-blue?style=plastic)](https://img.shields.io/badge/Read%20More-blue?style=plastic)
+
+- Needs a server?
+  https://github.com/badges/shields/blob/master/doc/self-hosting.md
+- Is templating sufficient? Would need a Python implementation?
+  - https://github.com/badges/shields/blob/master/badge-maker/lib/badge-renderers.js
+  - https://github.com/dbrgn/coverage-badge
+  - Use `pybadges` or `pybadges-trend`?
+- Just scrape the SVG from `img.shields.io` **once**, at build time?
+:::
+
+:::{todo}
+Alternatives
+- Chips
+- Tokens
+  https://primer.style/react/storybook/?path=/story/components-token--default&globals=colorScheme:light_colorblind
+:::
 
 
 [icon slugs]: https://github.com/simple-icons/simple-icons/blob/master/slugs.md
