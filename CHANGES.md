@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+## v0.3.0 - 2024-04-06
 - Accept more options on grid table's `sd-item` directive
 - Add `shield` directive, to render badges through Shields.io
 - Add `hyper` role, to render different kinds of hyperlinks
