@@ -1,5 +1,5 @@
 from functools import lru_cache
-from typing import Any, Optional, Union
+from typing import Any, List, Optional, Tuple, Union
 
 from docutils import nodes
 from myst_parser.mocking import MockInliner
@@ -87,7 +87,7 @@ def get_html_page_title(url: str) -> str:
 
 def parse_block_myst(
     self: MockInliner, text: str, lineno: int, memo: Any, parent: nodes.Element, with_container: bool = False
-) -> tuple[list[nodes.Node], list[nodes.system_message]]:
+) -> Tuple[List[nodes.Node], List[nodes.system_message]]:
     """
     Parse the text and return a list of nodes.
 
@@ -109,7 +109,7 @@ def parse_block_myst(
 
 def parse_block_rst(  # pragma: nocover
     self: MockInliner, text: str, lineno: int, memo: Any, parent: nodes.Element
-) -> tuple[list[nodes.Node], list[nodes.system_message]]:
+) -> Tuple[List[nodes.Node], List[nodes.system_message]]:
     """
     mw = MarkdownWrapper()
     res = mw.render(text)
