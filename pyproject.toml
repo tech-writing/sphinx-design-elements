@@ -92,11 +92,11 @@ dependencies = [
 develop = [
   "black<25",
   "mypy<1.11",
-  "poethepoet<0.26",
-  "pyproject-fmt<1.9",
-  "ruff<0.4",
+  "poethepoet<0.27",
+  "pyproject-fmt<2.2",
+  "ruff<0.5",
   "types-docutils==0.20.0.3",
-  "validate-pyproject<0.17",
+  "validate-pyproject<0.19",
 ]
 docs = [
   "furo",
