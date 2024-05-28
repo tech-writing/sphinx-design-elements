@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## v0.3.2 - 2024-05-28
+- Dependencies: Use sphinx-design 0.5
+  sphinx-design 0.6 introduced CSS changes downstream projects might not
+  be prepared for.
+
 ## v0.3.1 - 2024-04-10
 - Fix compatibility issue with Python 3.8
 
