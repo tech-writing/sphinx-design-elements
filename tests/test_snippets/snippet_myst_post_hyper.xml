@@ -22,7 +22,9 @@
                     <paragraph classes="sd-card-text">
                         Technical advancements in Sphinx
                 <PassthroughTextElement>
-                    <reference classes="sd-stretched-link" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                    <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://community.panodata.org/t/technical-advancements-in-sphinx/278">
+                        <inline>
+                            https://community.panodata.org/t/technical-advancements-in-sphinx/278
         <paragraph>
             :Shield:
             

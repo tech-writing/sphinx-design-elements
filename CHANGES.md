@@ -1,6 +1,10 @@
 # Change Log
 
 ## Unreleased
+- Dependencies: Update to sphinx-design 0.6.0
+  See also [sphinx-design change log].
+
+[sphinx-design change log]: https://sphinx-design.readthedocs.io/en/furo-theme/changelog.html#v0-6-0-2024-05-23
 
 ## v0.3.2 - 2024-05-28
 - Dependencies: Use sphinx-design 0.5
