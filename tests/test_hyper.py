@@ -217,7 +217,9 @@ def test_hyper_card_minimal(render):
         <paragraph classes="sd-card-text">
             Example Domain
     <PassthroughTextElement>
-        <reference classes="sd-stretched-link" refuri="https://example.org">
+        <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.org">
+            <inline>
+                https://example.org
 """.lstrip()  # noqa: E501
     )
 
@@ -245,6 +247,8 @@ def test_hyper_card_full(render):
         <paragraph classes="sd-card-text">
             footer
     <PassthroughTextElement>
-        <reference classes="sd-stretched-link" refuri="https://example.org">
+        <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.org">
+            <inline>
+                https://example.org
 """.lstrip()  # noqa: E501
     )
