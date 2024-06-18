@@ -3,6 +3,7 @@
 ## Unreleased
 - Dependencies: Update to sphinx-design 0.6.0
   See also [sphinx-design change log].
+- Remove support for Python 3.7 and 3.8, following `sphinx-design`.
 
 [sphinx-design change log]: https://sphinx-design.readthedocs.io/en/furo-theme/changelog.html#v0-6-0-2024-05-23
 
