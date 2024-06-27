@@ -257,7 +257,7 @@ lint = [
 
 release = [
   { cmd = "python -m build" },
-  { cmd = "twine upload dist/*.tar.gz dist/*.whl" },
+  { cmd = "twine upload --skip-existing dist/*.tar.gz dist/*.whl" },
 ]
 
 test = { cmd = "pytest" }
