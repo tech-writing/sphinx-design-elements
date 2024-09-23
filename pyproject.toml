@@ -98,7 +98,7 @@ develop = [
 ]
 docs = [
   "furo",
-  "myst-parser[linkify]>=0.18,<4",
+  "myst-parser[linkify]>=0.18,<5",
   "sphinx-autobuild",
   "sphinx-copybutton",
 ]
