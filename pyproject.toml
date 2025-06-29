@@ -94,7 +94,7 @@ develop = [
   "pyproject-fmt<2.6",
   "ruff<0.12",
   "types-docutils==0.20.0.3",
-  "validate-pyproject<0.24",
+  "validate-pyproject<0.25",
 ]
 docs = [
   "furo",
