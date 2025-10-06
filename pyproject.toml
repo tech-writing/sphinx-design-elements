@@ -93,7 +93,7 @@ develop = [
   "poethepoet<1",
   "pyproject-fmt<2.6",
   "ruff<0.13",
-  "types-docutils==0.20.0.3",
+  "types-docutils==0.22.2.20251006",
   "validate-pyproject<0.24",
 ]
 docs = [
