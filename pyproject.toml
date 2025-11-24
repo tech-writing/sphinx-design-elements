@@ -109,7 +109,7 @@ release = [
 ]
 test = [
   "pytest<9",
-  "pytest-cov<7",
+  "pytest-cov<8",
   "pytest-regressions<3",
   "sphinx_pytest<0.3",
 ]
