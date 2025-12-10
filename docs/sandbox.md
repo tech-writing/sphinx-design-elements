@@ -13,7 +13,7 @@ git clone https://github.com/panodata/sphinx-design-elements
 cd sphinx-design-elements
 python3 -m venv .venv
 source .venv/bin/activate
-pip install --editable=.[develop,docs,test]
+pip install --editable '.[develop,docs,test]'
 poe check
 ```
 
@@ -55,7 +55,7 @@ role-implementations, see [`gridtable.py`], [`infocard.py`], and [`tag.py`].
 
 ```shell
 # Install a few more prerequisites.
-pip install --editable=.[release]
+pip install --editable '.[release]'
 
 # Designate a new version.
 git tag v0.1.0
