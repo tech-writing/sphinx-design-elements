@@ -5,10 +5,6 @@ requires = [
   "versioningit",
 ]
 
-[tool.versioningit.vcs]
-method = "git"
-default-tag = "0.0.0"
-
 [project]
 name = "sphinx-design-elements"
 description = "A collection of composite web elements based on components from sphinx-design."
@@ -62,6 +58,7 @@ classifiers = [
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: Implementation :: CPython",
   "Topic :: Documentation",
   "Topic :: Documentation :: Sphinx",
@@ -86,8 +83,7 @@ dependencies = [
   "sphinx<7.2",
   "sphinx-design==0.6.1",
 ]
-[project.optional-dependencies]
-develop = [
+optional-dependencies.develop = [
   "black<26",
   "mypy<1.19",
   "poethepoet<1",
@@ -96,60 +92,82 @@ develop = [
   "types-docutils==0.20.0.3",
   "validate-pyproject<1",
 ]
-docs = [
+optional-dependencies.docs = [
   "furo",
   "myst-parser[linkify]>=0.18,<5",
   "sphinx-autobuild",
   "sphinx-copybutton",
 ]
-release = [
+optional-dependencies.release = [
   "build<2",
   "keyring",
   "twine<7",
 ]
-test = [
+optional-dependencies.test = [
   "pytest<9",
   "pytest-cov<8",
   "pytest-regressions<3",
-  "sphinx_pytest<0.3",
+  "sphinx-pytest<0.3",
 ]
-[project.urls]
-changelog = "https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md"
-documentation = "https://sphinx-design-elements.readthedocs.io/"
-homepage = "https://sphinx-design-elements.readthedocs.io/"
-repository = "https://github.com/panodata/sphinx-design-elements"
+urls.changelog = "https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md"
+urls.documentation = "https://sphinx-design-elements.readthedocs.io/"
+urls.homepage = "https://sphinx-design-elements.readthedocs.io/"
+urls.repository = "https://github.com/panodata/sphinx-design-elements"
+
+[tool.setuptools.packages.find]
+namespaces = false
 
 [tool.black]
 line-length = 120
 
-[tool.coverage.run]
-branch = false
-omit = [
-  "tests/*",
+[tool.ruff]
+line-length = 120
+
+lint.select = [
+  # Pycodestyle
+  "E",
+  # eradicate
+  "ERA",
+  # Pyflakes
+  "F",
+  # isort
+  "I",
+  # flake8-quotes
+  "Q",
+  # return
+  "RET",
+  # Bandit
+  "S",
+  # print
+  "T20",
+  # pyupgrade
+  # "UP",
+  # flake8-commas
+  # "COM",
+  # future-annotations
+  # "FA",
+  # flake8-type-checking
+  "TCH",
+  "W",
+  # flake8-2020
+  "YTT",
+  # flake8-unused-arguments
+  # "ARG",
+  # flake8-use-pathlib
+  # "PTH"
 ]
-source = ["sphinx_design_elements"]
 
-[tool.coverage.report]
-fail_under = 0
-show_missing = true
-
-[tool.mypy]
-packages = ["sphinx_design_elements"]
-exclude = [
+lint.extend-ignore = [
+  # zip() without an explicit strict= parameter
+  "B905",
+  # Unnecessary variable assignment before `return` statement
+  "RET504",
+  # Unnecessary `elif` after `return` statement
+  "RET505",
 ]
-check_untyped_defs = true
-implicit_optional = true
-install_types = true
-no_implicit_optional = true
-non_interactive = true
-show_error_codes = true
-strict_equality = true
-warn_unused_ignores = true
-warn_redundant_casts = true
 
-[[tool.mypy.overrides]]
-module = ["docutils.*"]
-ignore_missing_imports = true
+lint.per-file-ignores."docs/conf.py" = [ "ERA001" ] # Allow commented-out code (ERA001).
+lint.per-file-ignores."tests/*" = [ "S101" ]        # Allow use of `assert`, and `print`.
 
 [tool.pytest.ini_options]
 addopts = "-rA --verbosity=3 --cov --cov-report=term-missing --cov-report=xml"
@@ -165,62 +183,38 @@ xfail_strict = true
 markers = [
 ]
 
-[tool.ruff]
-line-length = 120
-
-lint.select = [
-  # Pycodestyle
-  "E",
-  "W",
-  # Pyflakes
-  "F",
-  # isort
-  "I",
-  # Bandit
-  "S",
-  # flake8-quotes
-  "Q",
-  # eradicate
-  "ERA",
-  # flake8-2020
-  "YTT",
-  # print
-  "T20",
-  # return
-  "RET",
-  # pyupgrade
-  # "UP",
-  # flake8-commas
-  # "COM",
-  # future-annotations
-  # "FA",
-  # flake8-type-checking
-  "TCH",
-  # flake8-unused-arguments
-  # "ARG",
-  # flake8-use-pathlib
-  # "PTH"
+[tool.coverage.run]
+branch = false
+omit = [
+  "tests/*",
 ]
+source = [ "sphinx_design_elements" ]
 
-lint.extend-ignore = [
-  # zip() without an explicit strict= parameter
-  "B905",
-  # df is a bad variable name. Be kinder to your future self.
-  "PD901",
-  # Unnecessary variable assignment before `return` statement
-  "RET504",
-  # Unnecessary `elif` after `return` statement
-  "RET505",
+[tool.coverage.report]
+fail_under = 0
+show_missing = true
+
+[tool.mypy]
+packages = [ "sphinx_design_elements" ]
+exclude = [
 ]
+check_untyped_defs = true
+implicit_optional = true
+install_types = true
+no_implicit_optional = true
+non_interactive = true
+show_error_codes = true
+strict_equality = true
+warn_unused_ignores = true
+warn_redundant_casts = true
 
+[[tool.mypy.overrides]]
+module = [ "docutils.*" ]
+ignore_missing_imports = true
 
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = ["S101"]  # Allow use of `assert`, and `print`.
-"docs/conf.py" = ["ERA001"]  # Allow commented-out code (ERA001).
-
-[tool.setuptools.packages.find]
-namespaces = false
-
+[tool.versioningit.vcs]
+method = "git"
+default-tag = "0.0.0"
 
 # ===================
 # Tasks configuration
@@ -234,10 +228,10 @@ check = [
 ]
 
 docs-autobuild = [
-  { cmd = "sphinx-autobuild --open-browser --watch sphinx_design_elements docs docs/_build" }
+  { cmd = "sphinx-autobuild --open-browser --watch sphinx_design_elements docs docs/_build" },
 ]
 docs-html = [
-  { cmd = "sphinx-build -W --keep-going docs docs/_build" }
+  { cmd = "sphinx-build -W --keep-going docs docs/_build" },
 ]
 
 format = [
