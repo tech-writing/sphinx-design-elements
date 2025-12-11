@@ -82,7 +82,7 @@ dynamic = [
 ]
 dependencies = [
   "beautifulsoup4",
-  "myst-parser[linkify]>=0.18,<5",
+  "myst-parser",
   "sphinx<7.2",
   "sphinx-design==0.6.1",
 ]
@@ -97,6 +97,7 @@ optional-dependencies.develop = [
 ]
 optional-dependencies.docs = [
   "furo",
+  "myst-parser[linkify]>=0.18",
   "sphinx-autobuild",
   "sphinx-copybutton",
 ]
