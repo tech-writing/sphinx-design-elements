@@ -29,13 +29,12 @@ jobs:
             sphinx-version: "7.*"
 
     env:
-      OS: ${{ matrix.os }}
       PYTHON: ${{ matrix.python-version }}
 
-    name: "
+    name: """
     Sphinx ${{ matrix.sphinx-version }}
     Python ${{ matrix.python-version }}
-    "
+    """
     steps:
 
     - name: Acquire sources
