@@ -84,7 +84,7 @@ dependencies = [
   "beautifulsoup4",
   "docutils<0.22",
   "myst-parser",
-  "sphinx<7.3",
+  "sphinx<7.4",
   "sphinx-design==0.6.1",
   "standard-imghdr; python_version>='3.13'",
 ]
@@ -112,6 +112,7 @@ optional-dependencies.test = [
   "pytest<9",
   "pytest-cov<8",
   "pytest-regressions<3",
+  "sphinx[test]",
   "sphinx-pytest<0.3",
   "verlib2",
 ]
