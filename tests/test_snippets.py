@@ -12,8 +12,14 @@ from pathlib import Path
 from typing import Callable
 
 import pytest
+import sphinx
+from verlib2 import Version
 
 from tests.conftest import SphinxBuilder
+
+if Version(sphinx.__version__) < Version("7"):
+    raise pytest.skip("Snippet tests require Sphinx >= 7", allow_module_level=True)
+
 
 SNIPPETS_PATH = Path(__file__).parent.parent / "docs" / "snippets"
 SNIPPETS_GLOB_RST = list((SNIPPETS_PATH / "rst").glob("[!_]*"))

@@ -111,6 +111,7 @@ optional-dependencies.test = [
   "pytest-cov<8",
   "pytest-regressions<3",
   "sphinx-pytest<0.3",
+  "verlib2",
 ]
 urls.changelog = "https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md"
 urls.documentation = "https://sphinx-design-elements.readthedocs.io/"
