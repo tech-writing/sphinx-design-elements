@@ -1,6 +1,8 @@
 from functools import lru_cache
 from typing import Any, List, Optional, Tuple, Union
+from urllib.request import urlopen
 
+from bs4 import BeautifulSoup
 from docutils import nodes
 from myst_parser.mocking import MockInliner
 from sphinx import addnodes
@@ -76,10 +78,6 @@ def get_html_page_title(url: str) -> str:
     """
     if not (url.startswith("http://") or url.startswith("https://")):
         return url
-
-    from urllib.request import urlopen
-
-    from bs4 import BeautifulSoup
 
     soup = BeautifulSoup(urlopen(url), "html.parser")  # noqa: S310
     return soup.title and soup.title.get_text() or url
