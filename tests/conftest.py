@@ -3,12 +3,18 @@ from pathlib import Path
 from typing import Any, Callable, Dict, Optional
 
 import pytest
+import sphinx
 from docutils import nodes
 from docutils.parsers.rst import roles
 from sphinx import addnodes
-from sphinx.testing.path import path as sphinx_path
 from sphinx.testing.util import SphinxTestApp
 from sphinx_design._compat import findall
+from verlib2 import Version
+
+if Version(sphinx.__version__) < Version("7.2"):
+    from sphinx.testing.path import path as sphinx_path
+else:
+    from pathlib import Path as sphinx_path
 
 pytest_plugins = "sphinx.testing.fixtures"
 
