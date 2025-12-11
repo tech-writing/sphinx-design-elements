@@ -13,6 +13,7 @@
 [![Downloads per month][badge-downloads-per-month]][project-downloads]
 
 [![Supported Python versions][badge-python-versions]][project-pypi]
+[![Supported Sphinx versions][badge-sphinx-versions]][project-sphinx]
 [![Status][badge-status]][project-pypi]
 [![Package version][badge-package-version]][project-pypi]
 
@@ -73,10 +74,12 @@ and maintaining [MyST Parser] and [sphinx-design].
 [badge-license]: https://img.shields.io/github/license/tech-writing/sphinx-design-elements.svg
 [badge-package-version]: https://img.shields.io/pypi/v/sphinx-design-elements.svg
 [badge-python-versions]: https://img.shields.io/pypi/pyversions/sphinx-design-elements.svg
+[badge-sphinx-versions]: https://img.shields.io/badge/sphinx-5.1%20--%207.1-blue.svg
 [badge-status]: https://img.shields.io/pypi/status/sphinx-design-elements.svg
 [badge-tests]: https://github.com/tech-writing/sphinx-design-elements/actions/workflows/main.yml/badge.svg
 [project-codecov]: https://codecov.io/gh/tech-writing/sphinx-design-elements
 [project-downloads]: https://pepy.tech/project/sphinx-design-elements/
 [project-license]: https://github.com/tech-writing/sphinx-design-elements/blob/main/LICENSE
 [project-pypi]: https://pypi.org/project/sphinx-design-elements
+[project-sphinx]: https://www.sphinx-doc.org/
 [project-tests]: https://github.com/tech-writing/sphinx-design-elements/actions/workflows/main.yml
