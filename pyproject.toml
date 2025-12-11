@@ -85,6 +85,7 @@ dependencies = [
   "myst-parser",
   "sphinx<7.2",
   "sphinx-design==0.6.1",
+  "standard-imghdr; python_version>='3.13'",
 ]
 optional-dependencies.develop = [
   "black<26",
