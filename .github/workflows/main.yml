@@ -31,10 +31,9 @@ jobs:
     env:
       PYTHON: ${{ matrix.python-version }}
 
-    name: """
-    Sphinx ${{ matrix.sphinx-version }}
-    Python ${{ matrix.python-version }}
-    """
+    name: >
+      Sphinx ${{ matrix.sphinx-version }}
+      Python ${{ matrix.python-version }}
     steps:
 
     - name: Acquire sources
