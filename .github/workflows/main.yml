@@ -35,6 +35,7 @@ jobs:
     env:
       PYTHON: ${{ matrix.python-version }}
       SPHINX: ${{ matrix.sphinx-version }}
+      UV_SYSTEM_PYTHON: true
 
     name: >
       Sphinx ${{ matrix.sphinx-version }}
@@ -48,22 +49,24 @@ jobs:
       uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python-version }}
-        architecture: x64
-        cache: 'pip'
-        cache-dependency-path: 'pyproject.toml'
+
+    - name: Set up uv
+      uses: astral-sh/setup-uv@v7
+      with:
+        cache-dependency-glob: |
+          pyproject.toml
+        cache-suffix: ${{ matrix.python-version }}
+        enable-cache: true
+        version: "latest"
 
     - name: Setup project
       run: |
 
-        # `setuptools 0.64.0` adds support for editable install hooks (PEP 660).
-        # https://github.com/pypa/setuptools/blob/main/CHANGES.rst#v6400
-        pip install "setuptools>=64" --upgrade
-
         # Install package in editable mode.
-        pip install --use-pep517 --prefer-binary --editable=.[develop,docs,test]
+        uv pip install --editable='.[develop,docs,test]'
 
         # Install specific Sphinx version, according to test matrix slot.
-        pip install sphinx==${{ matrix.sphinx-version }}
+        uv pip install 'sphinx==${{ matrix.sphinx-version }}'
 
     - name: Run linter and software tests
       run: |
