@@ -94,7 +94,7 @@ optional-dependencies.develop = [
   "poethepoet<1",
   "pyproject-fmt<3",
   "ruff<0.15",
-  "types-docutils<0.22",
+  "types-docutils<0.23",
   "validate-pyproject<1",
 ]
 optional-dependencies.docs = [
