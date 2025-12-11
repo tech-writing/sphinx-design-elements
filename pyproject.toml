@@ -91,10 +91,10 @@ develop = [
   "black<26",
   "mypy<1.19",
   "poethepoet<1",
-  "pyproject-fmt<2.6",
+  "pyproject-fmt<3",
   "ruff<0.15",
   "types-docutils==0.20.0.3",
-  "validate-pyproject<0.24",
+  "validate-pyproject<1",
 ]
 docs = [
   "furo",
