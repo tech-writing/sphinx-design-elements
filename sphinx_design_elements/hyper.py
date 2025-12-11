@@ -1,5 +1,5 @@
 import re
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any, Dict, List, Sequence, Tuple, Union
 from unittest.mock import patch
 from urllib.parse import parse_qs
 
@@ -82,7 +82,7 @@ class HyperRefRole(AnyXRefRole):
         lineno: int,
         inliner: Union[Inliner, MockInliner],
         options: Union[Dict, None] = None,
-        content: Union[List[str], None] = None,
+        content: Union[Sequence[str], None] = None,
     ) -> Tuple[List[Node], List[system_message]]:
 
         self.with_container = False
