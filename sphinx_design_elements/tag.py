@@ -49,7 +49,7 @@ class MultipleBadgeRole(BadgeRole):
         """
         Run the role, rendering multiple "badge" nodes.
         """
-        elements = []
+        elements: t.List[nodes.Node] = []
 
         # Enumerate multiple items.
         for text in self.decode_input_text():
@@ -69,5 +69,4 @@ class MultipleBadgeRole(BadgeRole):
         # Remove last spacer again.
         if elements:
             elements.remove(elements[-1])
-
         return elements, []

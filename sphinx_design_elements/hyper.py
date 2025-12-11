@@ -141,8 +141,8 @@ class HyperRefRole(AnyXRefRole):
 
         else:
             error = ValueError("Unable to resolve reference")
-            msg = inliner.reporter.warning(error)  # type: ignore[union-attr]
-            prb = inliner.problematic(rawtext, rawtext, msg)  # type: ignore[union-attr]
+            msg = inliner.reporter.warning(error)
+            prb = inliner.problematic(rawtext, rawtext, msg)
             return [prb], [msg]
 
         return SphinxRole.__call__(self, name, rawtext, text, lineno, inliner, options, content)  # type: ignore[arg-type]
@@ -158,7 +158,7 @@ class HyperRefRole(AnyXRefRole):
             except Exception:
                 return self.target
         elif self.srh.is_traditional_intersphinx_reference():
-            document = self.inliner.document  # type: ignore[attr-defined]
+            document = self.inliner.document
             ref = resolve_reference(env=self.app.env, document=document, target=self.target)
         elif self.srh.is_myst_reference():
             link = f"[]({self.target})"
@@ -308,7 +308,7 @@ class HyperRefRole(AnyXRefRole):
         Render a MyST snippet.
         """
         directive_nodes, _ = self.inliner.parse_block(  # type: ignore[attr-defined]
-            text=snippet, lineno=self.lineno, memo=self, parent=self.inliner.parent, with_container=self.with_container  # type: ignore[attr-defined]
+            text=snippet, lineno=self.lineno, memo=self, parent=self.inliner.parent, with_container=self.with_container
         )
         if not directive_nodes:
             return [], self.system_messages

@@ -1,6 +1,7 @@
 # Change Log
 
 ## Unreleased
+- Dependencies: Added compatibility with docutils 0.21
 
 ## v0.4.0 - 2024-06-27
 - Dependencies: Update to sphinx-design 0.6.0
