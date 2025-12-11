@@ -102,7 +102,10 @@ def parse_block_myst(
         ref = container.next_node()
     else:
         ref = container.next_node().next_node()
-    return [ref], []
+    if ref:
+        return [ref], []
+    else:
+        return [], []
 
 
 def parse_block_rst(  # pragma: nocover

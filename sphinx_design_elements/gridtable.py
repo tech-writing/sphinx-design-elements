@@ -104,9 +104,10 @@ class RowDirective(SphinxDirective):
         self.state.nested_parse(self.content, self.content_offset, grid_row)
 
         # Apply widths.
-        widths = self.state_machine.document.attributes.get("widths")
+        widths = t.cast("t.Iterable[str]", self.state_machine.document.attributes.get("widths"))
         for column, width in zip(grid_row.children, widths):
-            column.update_basic_atts({"classes": item_columns_option(width)})
+            element = t.cast("nodes.Element", column)
+            element.update_basic_atts({"classes": item_columns_option(width)})
 
         return [grid_row]
 

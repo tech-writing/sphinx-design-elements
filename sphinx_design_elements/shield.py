@@ -2,6 +2,7 @@ import urllib
 
 from docutils import nodes
 from docutils.parsers.rst import directives
+from docutils.statemachine import StringList
 from myst_parser.mocking import MockState
 from sphinx.application import Sphinx
 from sphinx.util.docutils import SphinxDirective
@@ -62,7 +63,7 @@ class ShieldsDirective(SphinxDirective):
         logo = self.options.get("logo")
         logo_color = self.options.get("logo-color")
         link = self.options.get("link")
-        link_title = self.options.get("link-title") or message  # TODO: Optionally add label?
+        link_title = self.options.get("link-title") or str(message)  # TODO: Optionally add label?
         link_alt = self.options.get("link-alt") or link_title
 
         # Sanity checks.
@@ -106,7 +107,7 @@ class ShieldsDirective(SphinxDirective):
         When using MyST, parse reference within the same parsing context.
         """
         node_ = nodes.Element()
-        self.state.nested_parse(content.splitlines(), self.content_offset, node_)
+        self.state.nested_parse(StringList(content.splitlines()), self.content_offset, node_)
         return node_.children
 
 

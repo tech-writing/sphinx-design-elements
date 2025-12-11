@@ -1,4 +1,4 @@
-from typing import Dict, List, Tuple
+from typing import List, Tuple, cast
 
 from docutils import nodes
 from docutils.statemachine import StringList
@@ -49,7 +49,7 @@ class GridBuilderDirective(SphinxDirective):
         grid_container += grid_row
         return grid_container, grid_row
 
-    def create_card(self) -> Tuple[nodes.container, nodes.container]:
+    def create_card(self) -> Tuple[nodes.Element, nodes.Element]:
         """
         Create a sphinx-design "card" component.
 
@@ -74,7 +74,7 @@ class GridBuilderDirective(SphinxDirective):
 
         card_body = card_node.children[0]
         self.set_source_info(card_body)
-        return card_node, card_body
+        return cast("nodes.Element", card_node), cast("nodes.Element", card_body)
 
 
 class InfoCardDirective(GridBuilderDirective):
@@ -89,7 +89,6 @@ class InfoCardDirective(GridBuilderDirective):
     has_content = True
     required_arguments = 0
     optional_arguments = 1
-    option_spec: Dict[str, str] = {}
 
     def run(self) -> List[nodes.Node]:
         # Create a canvas grid.
