@@ -74,7 +74,7 @@ and maintaining [MyST Parser] and [sphinx-design].
 [badge-license]: https://img.shields.io/github/license/tech-writing/sphinx-design-elements.svg
 [badge-package-version]: https://img.shields.io/pypi/v/sphinx-design-elements.svg
 [badge-python-versions]: https://img.shields.io/pypi/pyversions/sphinx-design-elements.svg
-[badge-sphinx-versions]: https://img.shields.io/badge/sphinx-5.1%20--%207.*-blue.svg
+[badge-sphinx-versions]: https://img.shields.io/badge/sphinx-5.1%20--%208.*-blue.svg
 [badge-status]: https://img.shields.io/pypi/status/sphinx-design-elements.svg
 [badge-tests]: https://github.com/tech-writing/sphinx-design-elements/actions/workflows/main.yml/badge.svg
 [project-codecov]: https://codecov.io/gh/tech-writing/sphinx-design-elements

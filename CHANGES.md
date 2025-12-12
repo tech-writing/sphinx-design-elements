@@ -2,7 +2,7 @@
 
 ## Unreleased
 - Dependencies: Added compatibility with docutils 0.21
-- Dependencies: Added compatibility with sphinx 7
+- Dependencies: Added compatibility with sphinx 7 and 8
 
 ## v0.4.0 - 2024-06-27
 - Dependencies: Update to sphinx-design 0.6.0

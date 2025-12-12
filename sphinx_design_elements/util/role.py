@@ -17,6 +17,10 @@ def resolve_reference(
     Create node layout for a link to a Sphinx intersphinx reference.
     """
 
+    # Sphinx 8.2+
+    if "intersphinx_resolve_self" not in env.config:
+        env.config.intersphinx_resolve_self = False  # type: ignore[attr-defined]
+
     refnode_content = nodes.TextElement(reftarget=target, reftype="any")
     refnode_xref = addnodes.pending_xref(reftarget=target, reftype="any")
 
