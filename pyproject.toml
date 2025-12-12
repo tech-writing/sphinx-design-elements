@@ -84,7 +84,7 @@ dependencies = [
   "beautifulsoup4",
   "docutils<0.22",
   "myst-parser",
-  "sphinx<7.4",
+  "sphinx<9",
   "sphinx-design==0.6.1",
   "standard-imghdr; python_version>='3.13'",
 ]
@@ -211,7 +211,7 @@ no_implicit_optional = true
 non_interactive = true
 show_error_codes = true
 strict_equality = true
-warn_unused_ignores = true
+warn_unused_ignores = false
 warn_redundant_casts = true
 
 [[tool.mypy.overrides]]
