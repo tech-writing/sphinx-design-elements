@@ -3,7 +3,7 @@ import re
 import pytest
 from sphinx_pytest.plugin import CreateDoctree
 
-from tests.util import render_reference
+from tests.util import patch_snippet_docutils_forward, render_reference
 
 
 def test_hyper_unknown_type(render):
@@ -53,9 +53,8 @@ def test_hyper_mailto_url(sphinx_doctree_no_tr: CreateDoctree):
 def test_hyper_label_pending(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`foobar`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == patch_snippet_docutils_forward(
+        """
 <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="foobar" reftype="ref" refwarn="True">
     <inline classes="xref std std-ref">
         foobar
@@ -66,9 +65,8 @@ def test_hyper_label_pending(sphinx_doctree_no_tr: CreateDoctree):
 def test_hyper_intersphinx(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`foo:bar`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == patch_snippet_docutils_forward(
+        """
 <pending_xref refdoc="index" refdomain="std" refexplicit="False" reftarget="foo:bar" reftype="ref" refwarn="True">
     <inline classes="xref std std-ref">
         foo:bar
@@ -79,9 +77,8 @@ def test_hyper_intersphinx(sphinx_doctree_no_tr: CreateDoctree):
 def test_hyper_myst(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`project:index.md`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == patch_snippet_docutils_forward(
+        """
 <pending_xref refdoc="index" refdomain="doc" refexplicit="True" reftarget="index" reftargetid="True" reftype="myst">
     <inline classes="xref myst">
         project:index.md
@@ -111,9 +108,8 @@ def test_hyper_explicit_title(sphinx_doctree_no_tr: CreateDoctree):
 {hyper}`title <foobar>`
 """
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == patch_snippet_docutils_forward(
+        """
 <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="foobar" reftype="ref" refwarn="True">
     <inline classes="xref std std-ref">
         title
@@ -126,9 +122,8 @@ def test_hyper_shield_label(render):
 (foobar)=
 {hyper}`foobar {type=shield}`
 """
-    assert (
-        render(content)
-        == """
+    assert render(content) == patch_snippet_docutils_forward(
+        """
 <reference id_link="True" refid="foobar" reftitle="foobar">
     <image alt="foobar" candidates="{'?': 'https://img.shields.io/badge/foobar-blue'}" uri="https://img.shields.io/badge/foobar-blue">
 """.lstrip()
@@ -140,9 +135,8 @@ def test_hyper_shield_open(render):
 (foobar)=
 {hyper-open}`foobar`
 """
-    assert (
-        render(content)
-        == """
+    assert render(content) == patch_snippet_docutils_forward(
+        """
 <reference id_link="True" refid="foobar" reftitle="foobar">
     <image alt="foobar" candidates="{'?': 'https://img.shields.io/badge/Open-foobar-darkblue'}" uri="https://img.shields.io/badge/Open-foobar-darkblue">
 """.lstrip()
@@ -209,9 +203,8 @@ def test_hyper_card_minimal(render):
 """
     text = render(content, with_container=True)
 
-    assert (
-        text
-        == """
+    assert text == patch_snippet_docutils_forward(
+        """
 <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
     <container classes="sd-card-body" design_component="card-body" is_div="True">
         <paragraph classes="sd-card-text">
@@ -230,9 +223,8 @@ def test_hyper_card_full(render):
 """
     text = render(content, with_container=True)
 
-    assert (
-        text
-        == """
+    assert text == patch_snippet_docutils_forward(
+        """
 <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
     <container classes="sd-card-header" design_component="card-header" is_div="True">
         <paragraph classes="sd-card-text">

@@ -1,5 +1,5 @@
 from functools import lru_cache
-from typing import Any, List, Optional, Tuple, Union
+from typing import Any, List, Optional, Tuple, Union, cast
 from urllib.request import urlopen
 
 from bs4 import BeautifulSoup
@@ -57,6 +57,7 @@ def label_from_reference_element(ref: nodes.Node) -> str:
     return ref.astext()
     """
 
+    txt: Optional[nodes.TextElement]
     try:
         txt = next(ref.findall(nodes.TextElement, include_self=False))
     except StopIteration:
@@ -102,10 +103,11 @@ def parse_block_myst(
             self._renderer.nested_render_text(text, lineno, inline=False)
 
     # Extract the reference node from the container paragraph node.
+    ref: Optional[nodes.Node]
     if with_container:
         ref = container.next_node()
     else:
-        ref = container.next_node().next_node()
+        ref = cast("nodes.Node", container.next_node()).next_node()
     if ref:
         return [ref], []
     else:

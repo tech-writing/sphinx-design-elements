@@ -1,11 +1,13 @@
 import os
 from unittest.mock import patch
 
+import docutils
 from docutils import nodes
 from sphinx import addnodes
 from sphinx.errors import SphinxError
 from sphinx.testing.util import SphinxTestApp
 from sphinx_pytest.plugin import AppWrapper, CreateDoctree
+from verlib2 import Version
 
 from sphinx_design_elements.hyper import setup_hyper
 from tests.conftest import SphinxBuilder
@@ -81,3 +83,37 @@ def render_reference_builder(builder: SphinxBuilder, content: str) -> str:
     builder.build()
 
     return find_reference(clean_doctree(builder.get_doctree("index", post_transforms=True))).pformat()
+
+
+def patch_snippet_docutils_forward(snippet: str) -> str:
+    """
+    docutils 0.22 returns a few boolean values as integer values.
+    """
+    if Version(docutils.__version__) >= Version("0.22"):
+        snippet = (
+            snippet.replace('has_title="True"', 'has_title="1"')
+            .replace('id_link="True"', 'id_link="1"')
+            .replace('is_div="True"', 'is_div="1"')
+            .replace('refexplicit="True"', 'refexplicit="1"')
+            .replace('refexplicit="False"', 'refexplicit="0"')
+            .replace('refwarn="True"', 'refwarn="1"')
+            .replace('opened="False"', 'opened="0"')
+        )
+    return snippet
+
+
+def patch_snippet_docutils_reverse(snippet: str) -> str:
+    """
+    docutils 0.22 returns a few boolean values as integer values.
+    """
+    if Version(docutils.__version__) >= Version("0.22"):
+        snippet = (
+            snippet.replace('has_title="1"', 'has_title="True"')
+            .replace('id_link="1"', 'id_link="True"')
+            .replace('is_div="1"', 'is_div="True"')
+            .replace('refexplicit="1"', 'refexplicit="True"')
+            .replace('refexplicit="0"', 'refexplicit="False"')
+            .replace('refwarn="1"', 'refwarn="True"')
+            .replace('opened="0"', 'opened="False"')
+        )
+    return snippet

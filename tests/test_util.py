@@ -5,6 +5,7 @@ import pytest
 from docutils import nodes
 
 from sphinx_design_elements.util.directive import MarkdownWrapper, SmartReference, link_to_markdown
+from tests.util import patch_snippet_docutils_forward
 
 
 @dataclasses.dataclass
@@ -117,4 +118,6 @@ def test_link_to_markdown_all_options():
 def test_markdown_wrapper():
     mw = MarkdownWrapper()
     outcome = mw.render('[label](#document "title")')[0].next_node(nodes.reference)
-    assert str(outcome) == '<reference id_link="True" reftitle="title" refuri="#document">label</reference>'
+    assert str(outcome) == patch_snippet_docutils_forward(
+        '<reference id_link="True" reftitle="title" refuri="#document">label</reference>'
+    )
