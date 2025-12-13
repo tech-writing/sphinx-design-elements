@@ -9,7 +9,7 @@ from tests.util import patch_snippet_docutils_forward
 
 
 @dataclasses.dataclass
-class TestItem:
+class ReferenceItem:
     input: str
     output: Union[bool, str]
 
@@ -19,95 +19,95 @@ class TestItem:
 
 
 url_tests = [
-    TestItem(input="https://example.org/", output=True),
-    TestItem(input="foobar://example.org/", output=False),
+    ReferenceItem(input="https://example.org/", output=True),
+    ReferenceItem(input="foobar://example.org/", output=False),
 ]
 
 
 intersphinx_tests = [
     # That's an intersphinx reference.
-    TestItem(input="foo:bar", output=True),
+    ReferenceItem(input="foo:bar", output=True),
     # Not an intersphinx reference at all.
-    TestItem(input="foo/bar", output=False),
+    ReferenceItem(input="foo/bar", output=False),
     # Too many components.
-    TestItem(input="foo:bar:baz", output=False),
+    ReferenceItem(input="foo:bar:baz", output=False),
     # MyST references are not (traditional) intersphinx references.
-    TestItem(input="#foobar", output=False),
-    TestItem(input="inv:project#remote-label", output=False),
+    ReferenceItem(input="#foobar", output=False),
+    ReferenceItem(input="inv:project#remote-label", output=False),
 ]
 
 
 indirect_tests = [
-    TestItem(input="[indirect-label]", output=True),
-    TestItem(input="unknown-label", output=False),
-    TestItem(input="#local-label", output=False),
+    ReferenceItem(input="[indirect-label]", output=True),
+    ReferenceItem(input="unknown-label", output=False),
+    ReferenceItem(input="#local-label", output=False),
 ]
 
 
 myst_tests = [
     # Project-local references.
-    TestItem(input="#local-label", output=True),
+    ReferenceItem(input="#local-label", output=True),
     # Specific references.
-    TestItem(input="inv:project#remote-label", output=True),
-    TestItem(input="path:/to/file.txt", output=True),
-    TestItem(input="project:acme42", output=True),
+    ReferenceItem(input="inv:project#remote-label", output=True),
+    ReferenceItem(input="path:/to/file.txt", output=True),
+    ReferenceItem(input="project:acme42", output=True),
     # Others.
-    TestItem(input="[indirect-label]", output=False),
-    TestItem(input="unknown-label", output=False),
+    ReferenceItem(input="[indirect-label]", output=False),
+    ReferenceItem(input="unknown-label", output=False),
 ]
 
 
 translate_references = [
     # Translate project-local and intersphinx references.
-    TestItem(input="document", output="#document"),
-    TestItem(input="guide:document", output="inv:guide#document"),
+    ReferenceItem(input="document", output="#document"),
+    ReferenceItem(input="guide:document", output="inv:guide#document"),
     # Pass-through all others verbatim.
-    TestItem(input="#local-label", output="#local-label"),
-    TestItem(input="https://example.org", output="https://example.org"),
-    TestItem(input="inv:guide#document", output="inv:guide#document"),
-    TestItem(input="[document]", output="[document]"),
+    ReferenceItem(input="#local-label", output="#local-label"),
+    ReferenceItem(input="https://example.org", output="https://example.org"),
+    ReferenceItem(input="inv:guide#document", output="inv:guide#document"),
+    ReferenceItem(input="[document]", output="[document]"),
 ]
 
 
 translate_links = [
     # Translate project-local and intersphinx references.
-    TestItem(input="document", output="[](#document)"),
-    TestItem(input="guide:document", output="[](inv:guide#document)"),
+    ReferenceItem(input="document", output="[](#document)"),
+    ReferenceItem(input="guide:document", output="[](inv:guide#document)"),
     # Pass-through all others verbatim.
-    TestItem(input="#local-label", output="[](#local-label)"),
-    TestItem(input="https://example.org", output="[](https://example.org)"),
-    TestItem(input="inv:guide#document", output="[](inv:guide#document)"),
-    TestItem(input="[document]", output="[][document]"),
+    ReferenceItem(input="#local-label", output="[](#local-label)"),
+    ReferenceItem(input="https://example.org", output="[](https://example.org)"),
+    ReferenceItem(input="inv:guide#document", output="[](inv:guide#document)"),
+    ReferenceItem(input="[document]", output="[][document]"),
 ]
 
 
-@pytest.mark.parametrize("item", url_tests, ids=TestItem.ids(url_tests))
-def test_reference_url(item: TestItem):
+@pytest.mark.parametrize("item", url_tests, ids=ReferenceItem.ids(url_tests))
+def test_reference_url(item: ReferenceItem):
     assert SmartReference(item.input).is_url() == item.output
 
 
-@pytest.mark.parametrize("item", intersphinx_tests, ids=TestItem.ids(intersphinx_tests))
-def test_reference_intersphinx(item: TestItem):
+@pytest.mark.parametrize("item", intersphinx_tests, ids=ReferenceItem.ids(intersphinx_tests))
+def test_reference_intersphinx(item: ReferenceItem):
     assert SmartReference(item.input).is_traditional_intersphinx_reference() == item.output
 
 
-@pytest.mark.parametrize("item", indirect_tests, ids=TestItem.ids(indirect_tests))
-def test_reference_indirect(item: TestItem):
+@pytest.mark.parametrize("item", indirect_tests, ids=ReferenceItem.ids(indirect_tests))
+def test_reference_indirect(item: ReferenceItem):
     assert SmartReference(item.input).is_indirect_reference() == item.output
 
 
-@pytest.mark.parametrize("item", myst_tests, ids=TestItem.ids(myst_tests))
-def test_reference_myst(item: TestItem):
+@pytest.mark.parametrize("item", myst_tests, ids=ReferenceItem.ids(myst_tests))
+def test_reference_myst(item: ReferenceItem):
     assert SmartReference(item.input).is_myst_reference() == item.output
 
 
-@pytest.mark.parametrize("item", translate_references, ids=TestItem.ids(translate_references))
-def test_reference_to_myst(item: TestItem):
+@pytest.mark.parametrize("item", translate_references, ids=ReferenceItem.ids(translate_references))
+def test_reference_to_myst(item: ReferenceItem):
     assert SmartReference(item.input).reference_to_myst() == item.output
 
 
-@pytest.mark.parametrize("item", translate_links, ids=TestItem.ids(translate_links))
-def test_link_to_markdown(item: TestItem):
+@pytest.mark.parametrize("item", translate_links, ids=ReferenceItem.ids(translate_links))
+def test_link_to_markdown(item: ReferenceItem):
     assert link_to_markdown(item.input) == item.output
 
 
