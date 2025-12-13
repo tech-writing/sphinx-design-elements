@@ -26,6 +26,9 @@ jobs:
           "3.9",
           "3.14",
         ]
+        docutils-version: [
+          "0.21.*",
+        ]
         sphinx-version: [
           "5.*",
           "6.*",
@@ -33,7 +36,23 @@ jobs:
           "8.*",
         ]
         exclude:
+
+          # Don't validate Sphinx 8 on Python 3.9. It is not supported.
           - python-version: "3.9"
+            docutils-version: "0.21.*"
+            sphinx-version: "8.*"
+
+        include:
+
+          # Validate docutils 0.19, 0.20, and 0.22.
+          - python-version: "3.14"
+            docutils-version: "0.19.*"
+            sphinx-version: "8.*"
+          - python-version: "3.14"
+            docutils-version: "0.20.*"
+            sphinx-version: "8.*"
+          - python-version: "3.14"
+            docutils-version: "0.22.*"
             sphinx-version: "8.*"
 
     env:
@@ -43,6 +62,7 @@ jobs:
 
     name: >
       Sphinx ${{ matrix.sphinx-version }}
+      docutils ${{ matrix.docutils-version }}
       Python ${{ matrix.python-version }}
     steps:
 
@@ -69,8 +89,9 @@ jobs:
         # Install package in editable mode.
         uv pip install --editable='.[develop,docs,test]'
 
-        # Install specific Sphinx version, according to test matrix slot.
+        # Install specific Sphinx and docutils versions, according to test matrix slots.
         uv pip install 'sphinx==${{ matrix.sphinx-version }}'
+        uv pip install 'docutils==${{ matrix.docutils-version }}'
 
         # Display Sphinx version.
         sphinx-build --version
