@@ -3,7 +3,7 @@
 import os
 
 project = "Sphinx Design Elements"
-copyright = "2023-2024, Panodata Developers"  # noqa: A001
+copyright = "2023-2025, Panodata Developers"
 author = "Panodata Developers"
 
 extensions = [
