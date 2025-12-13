@@ -5,7 +5,13 @@ from furo import get_navigation_tree
 from sphinx import addnodes
 from sphinx.builders import Builder
 from sphinx.builders.html import StandaloneHTMLBuilder
-from sphinx.environment import TocTree
+
+try:
+    # Sphinx 8.x+
+    from sphinx.environment.adapters.toctree import TocTree
+except ImportError:
+    # Sphinx 7.x and earlier
+    from sphinx.environment import TocTree  # type: ignore[attr-defined,no-redef]
 from sphinx.errors import SphinxError
 from sphinx.ext.intersphinx import resolve_reference_detect_inventory
 from sphinx.util import logging
