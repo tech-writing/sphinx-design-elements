@@ -83,6 +83,7 @@ dynamic = [
 dependencies = [
   "beautifulsoup4",
   "myst-parser",
+  "docutils<0.23",
   "sphinx<9",
   "sphinx-design==0.6.1",
   "standard-imghdr; python_version>='3.13'",
@@ -93,7 +94,7 @@ optional-dependencies.develop = [
   "poethepoet<1",
   "pyproject-fmt<3",
   "ruff<0.15",
-  "types-docutils",
+  "types-docutils<0.23",
   "validate-pyproject<1",
 ]
 optional-dependencies.docs = [
