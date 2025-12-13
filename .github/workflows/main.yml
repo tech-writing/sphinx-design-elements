@@ -34,26 +34,30 @@ jobs:
           "6.*",
           "7.*",
           "8.*",
+          "9.*",
         ]
         exclude:
 
-          # Don't validate Sphinx 8 on Python 3.9. It is not supported.
+          # Don't validate Sphinx 8 and 9 on Python 3.9. It is not supported.
           - python-version: "3.9"
             docutils-version: "0.21.*"
             sphinx-version: "8.*"
+          - python-version: "3.9"
+            docutils-version: "0.21.*"
+            sphinx-version: "9.*"
 
         include:
 
           # Validate docutils 0.19, 0.20, and 0.22.
           - python-version: "3.14"
             docutils-version: "0.19.*"
-            sphinx-version: "8.*"
+            sphinx-version: "9.*"
           - python-version: "3.14"
             docutils-version: "0.20.*"
-            sphinx-version: "8.*"
+            sphinx-version: "9.*"
           - python-version: "3.14"
             docutils-version: "0.22.*"
-            sphinx-version: "8.*"
+            sphinx-version: "9.*"
 
     env:
       PYTHON: ${{ matrix.python-version }}
