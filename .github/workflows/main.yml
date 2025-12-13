@@ -87,7 +87,7 @@ jobs:
         enable-cache: true
         version: "latest"
 
-    - name: Setup project
+    - name: Set up project
       run: |
 
         # Install package in editable mode.
@@ -97,8 +97,10 @@ jobs:
         uv pip install 'sphinx==${{ matrix.sphinx-version }}'
         uv pip install 'docutils==${{ matrix.docutils-version }}'
 
-        # Display Sphinx version.
+    - name: Sphinx and docutils versions
+      run: |
         sphinx-build --version
+        docutils --version
 
     - name: Run linter and software tests
       run: |
