@@ -2,7 +2,7 @@
 Test the documented snippets run correctly.
 
 Contrary to sphinx-design, this test suite is more relaxed on different
-outcomes between rST and MyST renderings, because, due to the nature of
+outcomes between rST and MyST renderings. Due to the nature of
 composite elements, the outcome of more complex nested nodes is often
 not the same, specifically when using multi-line content or
 cross-references within cell/item contents.
@@ -41,14 +41,15 @@ def write_assets(src_path: Path):
 )
 def test_snippets_rst_pre(sphinx_builder: Callable[..., SphinxBuilder], path: Path, file_regression):
     """Test snippets written in RestructuredText (before post-transforms)."""
+    from tests.util import patch_snippet_docutils_reverse
+
     builder = sphinx_builder()
     content = "Heading\n-------" + "\n\n" + path.read_text(encoding="utf8")
     builder.src_path.joinpath("index.rst").write_text(content, encoding="utf8")
     write_assets(builder.src_path)
     builder.build()
-    pformat = builder.get_doctree("index").pformat()
     file_regression.check(
-        pformat,
+        patch_snippet_docutils_reverse(builder.get_doctree("index").pformat()),
         basename=f"snippet_rst_pre_{path.name[:-len(path.suffix)]}",
         extension=".xml",
         encoding="utf8",
@@ -62,13 +63,15 @@ def test_snippets_rst_pre(sphinx_builder: Callable[..., SphinxBuilder], path: Pa
 )
 def test_snippets_myst_pre(sphinx_builder: Callable[..., SphinxBuilder], path: Path, file_regression):
     """Test snippets written in MyST Markdown (before post-transforms)."""
+    from tests.util import patch_snippet_docutils_reverse
+
     builder = sphinx_builder()
     content = "# Heading" + "\n\n\n" + path.read_text(encoding="utf8")
     builder.src_path.joinpath("index.md").write_text(content, encoding="utf8")
     write_assets(builder.src_path)
     builder.build()
     file_regression.check(
-        builder.get_doctree("index").pformat(),
+        patch_snippet_docutils_reverse(builder.get_doctree("index").pformat()),
         basename=f"snippet_myst_pre_{path.name[:-len(path.suffix)]}",
         extension=".xml",
         encoding="utf8",
@@ -82,14 +85,15 @@ def test_snippets_myst_pre(sphinx_builder: Callable[..., SphinxBuilder], path: P
 )
 def test_snippets_rst_post(sphinx_builder: Callable[..., SphinxBuilder], path: Path, file_regression):
     """Test snippets written in RestructuredText (after HTML post-transforms)."""
+    from tests.util import patch_snippet_docutils_reverse
+
     builder = sphinx_builder()
     content = "Heading\n-------" + "\n\n" + path.read_text(encoding="utf8")
     builder.src_path.joinpath("index.rst").write_text(content, encoding="utf8")
     write_assets(builder.src_path)
     builder.build()
-    pformat = builder.get_doctree("index", post_transforms=True).pformat()
     file_regression.check(
-        pformat,
+        patch_snippet_docutils_reverse(builder.get_doctree("index", post_transforms=True).pformat()),
         basename=f"snippet_rst_post_{path.name[:-len(path.suffix)]}",
         extension=".xml",
         encoding="utf8",
@@ -103,13 +107,15 @@ def test_snippets_rst_post(sphinx_builder: Callable[..., SphinxBuilder], path: P
 )
 def test_snippets_myst_post(sphinx_builder: Callable[..., SphinxBuilder], path: Path, file_regression):
     """Test snippets written in MyST Markdown (after HTML post-transforms)."""
+    from tests.util import patch_snippet_docutils_reverse
+
     builder = sphinx_builder()
     content = "# Heading" + "\n\n\n" + path.read_text(encoding="utf8")
     builder.src_path.joinpath("index.md").write_text(content, encoding="utf8")
     write_assets(builder.src_path)
     builder.build()
     file_regression.check(
-        builder.get_doctree("index", post_transforms=True).pformat(),
+        patch_snippet_docutils_reverse(builder.get_doctree("index", post_transforms=True).pformat()),
         basename=f"snippet_myst_post_{path.name[:-len(path.suffix)]}",
         extension=".xml",
         encoding="utf8",
