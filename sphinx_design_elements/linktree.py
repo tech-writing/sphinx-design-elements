@@ -1,3 +1,4 @@
+import sys
 import traceback
 from typing import List
 
@@ -62,7 +63,7 @@ class LinkTreeDirective(SphinxDirective):
                 f"The 'linktree' directive currently does not accept content. "
                 f"The offending node is:\n{self.block_text}"
             )
-            self.reporter.severe(message)
+            self.reporter.severe(message)  # type: ignore[attr-defined]
             raise SphinxError(message)
 
         # Create a surrogate node element.
@@ -125,7 +126,8 @@ class LinkTreeProcessor:
         try:
             project.toctree(maxdepth=int(node.get("maxdepth", -1)))
         except Exception as ex:
-            tb = "".join(traceback.format_exception(ex))
+            exc_type, exc_value, exc_tb = sys.exc_info()
+            tb = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
             message = (
                 f"Error producing a toc tree for document using the 'linktree' directive: {docname}. "
                 f"The offending node is:\n{node}\nThe exception was:\n{tb}"
