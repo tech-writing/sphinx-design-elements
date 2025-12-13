@@ -1,7 +1,7 @@
 # Change Log
 
 ## Unreleased
-- Dependencies: Added compatibility with docutils 0.21 and 0.22
+- Dependencies: Added compatibility with docutils 0.19 - 0.22
 - Dependencies: Added compatibility with sphinx 7 and 8
 
 ## v0.4.0 - 2024-06-27
