@@ -3,6 +3,7 @@
 ## Unreleased
 - Dependencies: Added compatibility with docutils 0.19 - 0.22
 - Dependencies: Added compatibility with sphinx 7 - 9
+- Add "link tree" element, using directive `linktree`
 
 ## v0.4.0 - 2024-06-27
 - Dependencies: Update to sphinx-design 0.6.0

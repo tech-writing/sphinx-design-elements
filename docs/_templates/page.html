@@ -1,0 +1,10 @@
+{%- extends "!page.html" %}
+
+{% block content %}
+{{ super() }}
+
+{% if pagename == "linktree" %}
+{% include "linktree-demo.html" %}
+{% endif %}
+
+{% endblock %}

@@ -7,6 +7,7 @@ import sphinx
 from docutils import nodes
 from docutils.parsers.rst import roles
 from sphinx import addnodes
+from sphinx.builders.html import StandaloneHTMLBuilder
 from sphinx.testing.util import SphinxTestApp
 from sphinx_design._compat import findall
 from verlib2 import Version
@@ -134,3 +135,30 @@ def find_reference(node: nodes.Node, with_container: bool = False):
     if results:
         return results[0]
     return node
+
+
+@pytest.fixture()
+def sphinx_html_builder(tmp_path: Path, make_app, monkeypatch):
+    """
+    Sphinx builder fixture entrypoint for pytest.
+
+    TODO: Derived from `sphinx_builder`. Maybe generalize?
+    """
+
+    def _create_project(buildername: str = "html", conf_kwargs: Optional[Dict[str, Any]] = None):
+        src_path = tmp_path / "srcdir"
+        src_path.mkdir()
+        conf_kwargs = conf_kwargs or {
+            "extensions": ["myst_parser", "sphinx_design", "sphinx_design_elements", "sphinx.ext.intersphinx"],
+            "myst_enable_extensions": ["colon_fence"],
+            "intersphinx_mapping": {
+                "sd": ("https://sphinx-design.readthedocs.io/en/latest/", None),
+                "myst": ("https://myst-parser.readthedocs.io/en/latest/", None),
+            },
+        }
+        content = "\n".join([f"{key} = {value!r}" for key, value in conf_kwargs.items()])
+        src_path.joinpath("conf.py").write_text(content, encoding="utf8")
+        app = make_app(srcdir=sphinx_path(os.path.abspath(str(src_path))), buildername=buildername)
+        return StandaloneHTMLBuilder(app, app.env)
+
+    yield _create_project
