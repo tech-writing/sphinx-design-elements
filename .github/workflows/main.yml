@@ -72,6 +72,12 @@ jobs:
 
     - name: Acquire sources
       uses: actions/checkout@v6
+      with:
+        # Fetch tags, because `versioningit` needs them.
+        # https://github.com/actions/checkout/issues/1471
+        fetch-tags: true
+        fetch-depth: 0
+        filter: tree:0
 
     - name: Set up Python
       uses: actions/setup-python@v6
