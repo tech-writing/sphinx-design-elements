@@ -89,7 +89,7 @@ class LinkTree:
         # When not running on behalf of a Sphinx context, `pathto` is not available.
         # TODO: Is there some other way to get it?
         if self.pathto is None:
-            logger.warning("WARNING: Running without Sphinx context, unable to compute links")
+            logger.info("WARNING: Running without Sphinx context, unable to compute links using `pathto`")
             self.pathto = lambda x: None
 
     def remove_from_title(self, text: t.Optional[str]) -> None:
