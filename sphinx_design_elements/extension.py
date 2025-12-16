@@ -12,6 +12,7 @@ from .dropdown_group import setup_dropdown_group
 from .gridtable import setup_gridtable
 from .hyper import setup_hyper
 from .infocard import setup_infocard
+from .linktree import setup_linktree
 from .shield import setup_shield
 from .tag import setup_tags
 
@@ -32,6 +33,7 @@ def setup_extension(app: Sphinx) -> None:
     setup_gridtable(app)
     setup_hyper(app)
     setup_infocard(app)
+    setup_linktree(app)
     setup_shield(app)
     setup_tags(app)
 

@@ -74,6 +74,7 @@ get_started
 gridtable
 infocard
 shield
+linktree
 ```
 
 ```{toctree}
@@ -132,6 +133,13 @@ Badge generator for Shields\.io, with optional target linking.
 :link-type: doc
 
 A versatile hyperlink generator.
+:::
+
+:::{grid-item-card} {octicon}`workflow` Link tree
+:link: linktree
+:link-type: doc
+
+A programmable toctree component.
 :::
 
 :::{grid-item-card} {octicon}`tag` Special badges
