@@ -85,7 +85,7 @@ dependencies = [
   "docutils<0.23",
   "myst-parser",
   "sphinx<10",
-  "sphinx-design==0.6.1",
+  "sphinx-design>=0.6.1,<0.8",
   "standard-imghdr; python_version>='3.13'",
 ]
 optional-dependencies.develop = [

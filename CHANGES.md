@@ -1,6 +1,8 @@
 # Change Log
 
 ## Unreleased
+- Dependencies: Permitted installation of sphinx-design 0.7.0,
+  effectively enabling support for Sphinx 9.
 
 ## v0.4.1 - 2025-12-14
 - Dependencies: Added compatibility with docutils 0.19 - 0.22
