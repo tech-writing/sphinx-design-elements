@@ -64,6 +64,7 @@ provided by this collection, and how to use them in your documentation markup.
 
 - [](#gridtable-directive)
 - [](#infocard-directive)
+- [](#linktree-directive)
 - [](#tag-role)
 
 Both [reStructuredText] and [Markedly Structured Text] syntax are supported equally well.
