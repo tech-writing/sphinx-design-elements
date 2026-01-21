@@ -1,6 +1,8 @@
 # Change Log
 
 ## Unreleased
+
+## v0.4.2 - 2025-12-14
 - Dependencies: Permitted installation of sphinx-design 0.7.0,
   effectively enabling support for Sphinx 9.
 
