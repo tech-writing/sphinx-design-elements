@@ -34,6 +34,20 @@ if False and html_theme == "furo":
     }
 
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
+
+# Configure link checker.
+linkcheck_ignore = [
+    "https://github.com/",
+    "https://jkalina.carrd.co/",
+    "https://simpleicons.org/",
+    "https://unsplash.com/",
+]
+linkcheck_anchors_ignore_for_url = [
+    # Requires JavaScript.
+    # After opting-in to new GitHub issues, Sphinx can no longer grok the HTML anchor references.
+    "https://github.com/",
+]
+
 myst_enable_extensions = [
     "attrs_block",
     "attrs_inline",

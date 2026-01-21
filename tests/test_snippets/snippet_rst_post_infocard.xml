@@ -10,9 +10,9 @@
                             <container classes="sd-row sd-m-0 sd-p-0" design_component="grid-row" is_div="True">
                                 <container classes="sd-col sd-d-flex-column sd-col-8 sd-col-xs-8 sd-col-sm-8 sd-col-md-8 sd-col-lg-8" design_component="grid-item" is_div="True">
                                     <paragraph>
-                                        <reference name="example.org/beagles" refuri="https://example.org/beagles">
-                                            example.org/beagles
-                                        <target ids="example-org-beagles" names="example.org/beagles" refuri="https://example.org/beagles">
+                                        <reference name="example.org" refuri="https://example.org/">
+                                            example.org
+                                        <target ids="example-org" names="example.org" refuri="https://example.org/">
                                     <line_block>
                                         <line>
                                             A module for collecting votes from beagles,

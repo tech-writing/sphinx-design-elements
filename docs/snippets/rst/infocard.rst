@@ -3,7 +3,7 @@
     .. grid-item::
         :columns: 8
 
-        `example.org/beagles <https://example.org/beagles>`_
+        `example.org <https://example.org/>`_
 
         | A module for collecting votes from beagles,
         | and for consolidating them.

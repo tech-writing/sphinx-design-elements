@@ -7,8 +7,7 @@
 - Dependencies: Added compatibility with sphinx 7 - 9
 
 ## v0.4.0 - 2024-06-27
-- Dependencies: Update to sphinx-design 0.6.0
-  See also [sphinx-design change log].
+- Dependencies: Updated to [sphinx-design 0.6.0]
 - Remove support for Python 3.7 and 3.8, following `sphinx-design`.
 
 ## v0.3.2 - 2024-05-28
@@ -41,4 +40,4 @@
 - Add "tag(s)" shortcuts, using roles `tag` and `tags`
 
 
-[sphinx-design change log]: https://sphinx-design.readthedocs.io/en/furo-theme/changelog.html#v0-6-0-2024-05-23
+[sphinx-design 0.6.0]: https://github.com/executablebooks/sphinx-design/releases/tag/v0.6.0
