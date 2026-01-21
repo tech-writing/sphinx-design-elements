@@ -32,7 +32,7 @@ keywords = [
   "tag",
   "web components",
 ]
-license = { file = "LICENSE" }
+license = "MIT"
 authors = [
   { name = "Andreas Motl", email = "andreas.motl@panodata.org" },
 ]
@@ -52,7 +52,6 @@ classifiers = [
   "Intended Audience :: Science/Research",
   "Intended Audience :: System Administrators",
   "Intended Audience :: Telecommunications Industry",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
