@@ -3,7 +3,7 @@
 # Getting Started
 
 ```{article-info}
-:author: "[The Panodata Developers](https://github.com/panodata)"
+:author: "[The Tech Writing Developers](https://github.com/tech-writing)"
 :date: "{sub-ref}`today`"
 :read-time: "1 min read"
 ```

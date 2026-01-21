@@ -116,10 +116,10 @@ optional-dependencies.test = [
   "sphinx-pytest<0.3",
   "verlib2",
 ]
-urls.changelog = "https://github.com/panodata/sphinx-design-elements/blob/main/CHANGES.md"
+urls.changelog = "https://github.com/tech-writing/sphinx-design-elements/blob/main/CHANGES.md"
 urls.documentation = "https://sphinx-design-elements.readthedocs.io/"
 urls.homepage = "https://sphinx-design-elements.readthedocs.io/"
-urls.repository = "https://github.com/panodata/sphinx-design-elements"
+urls.repository = "https://github.com/tech-writing/sphinx-design-elements"
 
 [tool.setuptools.packages.find]
 namespaces = false
