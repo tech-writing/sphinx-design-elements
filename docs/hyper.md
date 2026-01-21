@@ -1191,8 +1191,6 @@ Shield shortcut roles help saving a few keystrokes. Examples:
 `hyper-navigate`, `hyper-open`, `hyper-tutorial`, `hyper-read-more`,
 `hyper-readme-github`, `hyper-nb-colab`, `hyper-nb-binder`, `hyper-nb-github`.
 
----
-
 {hyper-navigate}`https://example.org`
 {hyper-open}`https://example.org`
 
