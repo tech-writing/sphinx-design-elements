@@ -9,7 +9,7 @@ After invoking `poe check`, and observing the software tests succeed, you
 should be ready to start hacking.
 
 ```shell
-git clone https://github.com/panodata/sphinx-design-elements
+git clone https://github.com/tech-writing/sphinx-design-elements
 cd sphinx-design-elements
 python3 -m venv .venv
 source .venv/bin/activate
@@ -66,7 +66,7 @@ poe release
 ```
 
 
-[`compiled/style.css`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/compiled/style.css
-[`gridtable.py`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/gridtable.py
-[`infocard.py`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/infocard.py
-[`tag.py`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/tag.py
+[`compiled/style.css`]: https://github.com/tech-writing/sphinx-design-elements/blob/main/sphinx_design_elements/compiled/style.css
+[`gridtable.py`]: https://github.com/tech-writing/sphinx-design-elements/blob/main/sphinx_design_elements/gridtable.py
+[`infocard.py`]: https://github.com/tech-writing/sphinx-design-elements/blob/main/sphinx_design_elements/infocard.py
+[`tag.py`]: https://github.com/tech-writing/sphinx-design-elements/blob/main/sphinx_design_elements/tag.py

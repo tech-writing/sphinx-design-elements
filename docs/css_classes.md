@@ -69,4 +69,4 @@ Taxi quer durch Bayern.
 ::::
 :::::
 
-[`compiled/style.css`]: https://github.com/panodata/sphinx-design-elements/blob/main/sphinx_design_elements/compiled/style.css
+[`compiled/style.css`]: https://github.com/tech-writing/sphinx-design-elements/blob/main/sphinx_design_elements/compiled/style.css

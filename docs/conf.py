@@ -3,8 +3,8 @@
 import os
 
 project = "Sphinx Design Elements"
-copyright = "2023-2025, Panodata Developers"
-author = "Panodata Developers"
+copyright = "2023-2026, Tech Writing Developers"
+author = "Tech Writing Developers"
 
 extensions = [
     "myst_parser",
