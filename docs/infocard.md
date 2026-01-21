@@ -22,7 +22,7 @@ without the maintenance nightmares of tables.
 
 :::{grid-item}
 :columns: 8
-[example.org/beagles](https://example.org/beagles)
+[example.org](https://example.org/)
 
 A module for collecting votes from beagles, \
 and for consolidating them.

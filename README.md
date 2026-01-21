@@ -71,7 +71,7 @@ and maintaining [MyST Parser] and [sphinx-design].
 [sphinx-design-elements]: https://sphinx-design-elements.readthedocs.io/
 
 [badge-coverage]: https://codecov.io/gh/tech-writing/sphinx-design-elements/branch/main/graph/badge.svg
-[badge-downloads-per-month]: https://pepy.tech/badge/sphinx-design-elements/month
+[badge-downloads-per-month]: https://static.pepy.tech/badge/sphinx-design-elements/month
 [badge-license]: https://img.shields.io/github/license/tech-writing/sphinx-design-elements.svg
 [badge-docutils-versions]: https://img.shields.io/badge/docutils-0.19%20--%200.22-blue.svg
 [badge-package-version]: https://img.shields.io/pypi/v/sphinx-design-elements.svg
@@ -80,7 +80,7 @@ and maintaining [MyST Parser] and [sphinx-design].
 [badge-status]: https://img.shields.io/pypi/status/sphinx-design-elements.svg
 [badge-tests]: https://github.com/tech-writing/sphinx-design-elements/actions/workflows/main.yml/badge.svg
 [project-codecov]: https://codecov.io/gh/tech-writing/sphinx-design-elements
-[project-downloads]: https://pepy.tech/project/sphinx-design-elements/
+[project-downloads]: https://pepy.tech/project/sphinx-design-elements
 [project-docutils]: https://docutils.sourceforge.io/
 [project-license]: https://github.com/tech-writing/sphinx-design-elements/blob/main/LICENSE
 [project-pypi]: https://pypi.org/project/sphinx-design-elements

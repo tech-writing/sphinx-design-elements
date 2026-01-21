@@ -21,7 +21,7 @@ def test_hyper_http_url_valid(sphinx_doctree_no_tr: CreateDoctree):
         ptree
         == """
 <reference refuri="https://example.org">
-    Example Domain
+    https://example.org
 """.lstrip()
     )
 
@@ -152,7 +152,7 @@ def test_hyper_button_basic(render):
         == """
 <reference classes="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary" refuri="https://example.org">
     <inline>
-        Example Domain
+        https://example.org
 """.lstrip()
     )
 
@@ -166,7 +166,7 @@ def test_hyper_button_with_icon(render):
     assert '<raw format="html"' in text
     assert '<svg version="1.1"' in text
     assert "example.org" in text
-    assert "Example Domain" in text
+    assert "https://example.org" in text
 
 
 def test_hyper_button_icon_only(render):
@@ -192,7 +192,7 @@ def test_hyper_badge(render):
         == """
 <reference classes="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary" refuri="https://example.org">
     <inline>
-        Example Domain
+        https://example.org
 """.lstrip()
     )
 
@@ -208,7 +208,7 @@ def test_hyper_card_minimal(render):
 <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
     <container classes="sd-card-body" design_component="card-body" is_div="True">
         <paragraph classes="sd-card-text">
-            Example Domain
+            https://example.org
     <PassthroughTextElement>
         <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.org">
             <inline>
@@ -234,7 +234,7 @@ def test_hyper_card_full(render):
             <PassthroughTextElement>
                 title
         <paragraph classes="sd-card-text">
-            Example Domain
+            https://example.org
     <container classes="sd-card-footer" design_component="card-footer" is_div="True">
         <paragraph classes="sd-card-text">
             footer
