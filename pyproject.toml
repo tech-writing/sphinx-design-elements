@@ -238,7 +238,10 @@ docs-autobuild = [
   { cmd = "sphinx-autobuild --open-browser --watch sphinx_design_elements docs docs/_build" },
 ]
 docs-html = [
-  { cmd = "sphinx-build -W --keep-going docs docs/_build" },
+  { cmd = "sphinx-build --builder=html -W --keep-going docs docs/_build" },
+]
+docs-linkcheck = [
+  { cmd = "sphinx-build --builder=linkcheck -W --keep-going docs docs/_build" },
 ]
 
 format = [
