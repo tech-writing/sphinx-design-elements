@@ -42,6 +42,7 @@ linkcheck_ignore = [
     "https://simpleicons.org/",
     "https://unsplash.com/",
     "https://example.org",
+    "https://docutils.sourceforge.io/",
 ]
 linkcheck_anchors_ignore_for_url = [
     # Requires JavaScript.
