@@ -41,6 +41,7 @@ linkcheck_ignore = [
     "https://jkalina.carrd.co/",
     "https://simpleicons.org/",
     "https://unsplash.com/",
+    "https://example.org",
 ]
 linkcheck_anchors_ignore_for_url = [
     # Requires JavaScript.
