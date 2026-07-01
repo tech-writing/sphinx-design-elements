@@ -71,7 +71,7 @@ jobs:
     steps:
 
     - name: Acquire sources
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         # Fetch tags, because `versioningit` needs them.
         # https://github.com/actions/checkout/issues/1471
