@@ -82,6 +82,7 @@ dynamic = [
 dependencies = [
   "beautifulsoup4",
   "docutils<0.23",
+  "furo",
   "myst-parser",
   "sphinx<10",
   "sphinx-design>=0.6.1,<0.8",
@@ -97,7 +98,6 @@ optional-dependencies.develop = [
   "validate-pyproject<1",
 ]
 optional-dependencies.docs = [
-  "furo",
   "myst-parser[linkify]>=0.18",
   "sphinx-autobuild",
   "sphinx-copybutton",
@@ -214,7 +214,7 @@ warn_unused_ignores = false
 warn_redundant_casts = true
 
 [[tool.mypy.overrides]]
-module = [ "docutils.*" ]
+module = [ "docutils.*", "furo.*" ]
 ignore_missing_imports = true
 
 [tool.versioningit.vcs]

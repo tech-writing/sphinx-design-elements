@@ -88,3 +88,10 @@ hr.docutils {
 .bottom-margin-generous {
   margin-bottom: 2em !important;
 }
+
+/**
+ * Fix appearance of page-rendered link tree.
+**/
+article .sidebar-tree p.caption {
+  text-align: unset;
+}

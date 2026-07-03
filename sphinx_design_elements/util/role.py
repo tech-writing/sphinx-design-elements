@@ -107,7 +107,7 @@ def parse_block_myst(
     if with_container:
         ref = container.next_node()
     else:
-        ref = cast("nodes.Node", container.next_node()).next_node()
+        ref = cast("nodes.Node", container.next_node()).next_node()  # type: ignore[redundant-cast]
     if ref:
         return [ref], []
     else:

@@ -102,6 +102,7 @@ jobs:
         # Install specific Sphinx and docutils versions, according to test matrix slots.
         uv pip install 'sphinx==${{ matrix.sphinx-version }}'
         uv pip install 'docutils==${{ matrix.docutils-version }}'
+        uv pip install 'types-docutils==${{ matrix.docutils-version }}'
 
     - name: Sphinx and docutils versions
       run: |
