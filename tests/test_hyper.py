@@ -17,73 +17,58 @@ def test_hyper_unknown_type(render):
 def test_hyper_http_url_valid(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`https://example.org`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == """
 <reference refuri="https://example.org">
     https://example.org
 """.lstrip()
-    )
 
 
 def test_hyper_http_url_invalid(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`https://randomfoobarunknown.org`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == """
 <reference refuri="https://randomfoobarunknown.org">
     https://randomfoobarunknown.org
 """.lstrip()
-    )
 
 
 def test_hyper_mailto_url(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`mailto:test@example.org`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert (
-        ptree
-        == """
+    assert ptree == """
 <reference refuri="mailto:test@example.org">
     mailto:test@example.org
 """.lstrip()
-    )
 
 
 def test_hyper_label_pending(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`foobar`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert ptree == patch_snippet_docutils_forward(
-        """
+    assert ptree == patch_snippet_docutils_forward("""
 <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="foobar" reftype="ref" refwarn="True">
     <inline classes="xref std std-ref">
         foobar
-""".lstrip()
-    )
+""".lstrip())
 
 
 def test_hyper_intersphinx(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`foo:bar`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert ptree == patch_snippet_docutils_forward(
-        """
+    assert ptree == patch_snippet_docutils_forward("""
 <pending_xref refdoc="index" refdomain="std" refexplicit="False" reftarget="foo:bar" reftype="ref" refwarn="True">
     <inline classes="xref std std-ref">
         foo:bar
-""".lstrip()
-    )
+""".lstrip())
 
 
 def test_hyper_myst(sphinx_doctree_no_tr: CreateDoctree):
     content = "{hyper}`project:index.md`"
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert ptree == patch_snippet_docutils_forward(
-        """
+    assert ptree == patch_snippet_docutils_forward("""
 <pending_xref refdoc="index" refdomain="doc" refexplicit="True" reftarget="index" reftargetid="True" reftype="myst">
     <inline classes="xref myst">
         project:index.md
-""".lstrip()
-    )
+""".lstrip())
 
 
 def test_hyper_indirect(render):
@@ -93,13 +78,10 @@ def test_hyper_indirect(render):
 [foobar]: https://example.org/
 """
     ptree = render(content)
-    assert (
-        ptree
-        == """
+    assert ptree == """
 <reference refuri="https://example.org/">
     Example Domain
 """.lstrip()
-    )
 
 
 def test_hyper_explicit_title(sphinx_doctree_no_tr: CreateDoctree):
@@ -108,13 +90,11 @@ def test_hyper_explicit_title(sphinx_doctree_no_tr: CreateDoctree):
 {hyper}`title <foobar>`
 """
     ptree = render_reference(sphinx_doctree_no_tr, content)
-    assert ptree == patch_snippet_docutils_forward(
-        """
+    assert ptree == patch_snippet_docutils_forward("""
 <pending_xref refdoc="index" refdomain="std" refexplicit="True" reftarget="foobar" reftype="ref" refwarn="True">
     <inline classes="xref std std-ref">
         title
-""".lstrip()
-    )
+""".lstrip())
 
 
 def test_hyper_shield_label(render):
@@ -122,12 +102,10 @@ def test_hyper_shield_label(render):
 (foobar)=
 {hyper}`foobar {type=shield}`
 """
-    assert render(content) == patch_snippet_docutils_forward(
-        """
+    assert render(content) == patch_snippet_docutils_forward("""
 <reference id_link="True" refid="foobar" reftitle="foobar">
     <image alt="foobar" candidates="{'?': 'https://img.shields.io/badge/foobar-blue'}" uri="https://img.shields.io/badge/foobar-blue">
-""".lstrip()
-    )
+""".lstrip())
 
 
 def test_hyper_shield_open(render):
@@ -135,26 +113,21 @@ def test_hyper_shield_open(render):
 (foobar)=
 {hyper-open}`foobar`
 """
-    assert render(content) == patch_snippet_docutils_forward(
-        """
+    assert render(content) == patch_snippet_docutils_forward("""
 <reference id_link="True" refid="foobar" reftitle="foobar">
     <image alt="foobar" candidates="{'?': 'https://img.shields.io/badge/Open-foobar-darkblue'}" uri="https://img.shields.io/badge/Open-foobar-darkblue">
-""".lstrip()
-    )
+""".lstrip())
 
 
 def test_hyper_button_basic(render):
     content = """
 {hyper}`https://example.org {type=button}`
 """
-    assert (
-        render(content)
-        == """
+    assert render(content) == """
 <reference classes="sd-sphinx-override sd-btn sd-text-wrap sd-btn-primary" refuri="https://example.org">
     <inline>
         https://example.org
 """.lstrip()
-    )
 
 
 def test_hyper_button_with_icon(render):
@@ -187,14 +160,11 @@ def test_hyper_badge(render):
 """
     text = render(content)
 
-    assert (
-        text
-        == """
+    assert text == """
 <reference classes="sd-sphinx-override sd-badge sd-bg-primary sd-bg-text-primary" refuri="https://example.org">
     <inline>
         https://example.org
 """.lstrip()
-    )
 
 
 def test_hyper_card_minimal(render):
@@ -203,8 +173,7 @@ def test_hyper_card_minimal(render):
 """
     text = render(content, with_container=True)
 
-    assert text == patch_snippet_docutils_forward(
-        """
+    assert text == patch_snippet_docutils_forward("""
 <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
     <container classes="sd-card-body" design_component="card-body" is_div="True">
         <paragraph classes="sd-card-text">
@@ -213,8 +182,7 @@ def test_hyper_card_minimal(render):
         <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.org">
             <inline>
                 https://example.org
-""".lstrip()  # noqa: E501
-    )
+""".lstrip())  # noqa: E501
 
 
 def test_hyper_card_full(render):
@@ -223,8 +191,7 @@ def test_hyper_card_full(render):
 """
     text = render(content, with_container=True)
 
-    assert text == patch_snippet_docutils_forward(
-        """
+    assert text == patch_snippet_docutils_forward("""
 <container classes="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm sd-card-hover" design_component="card" is_div="True">
     <container classes="sd-card-header" design_component="card-header" is_div="True">
         <paragraph classes="sd-card-text">
@@ -242,5 +209,4 @@ def test_hyper_card_full(render):
         <reference classes="sd-stretched-link sd-hide-link-text" refuri="https://example.org">
             <inline>
                 https://example.org
-""".lstrip()  # noqa: E501
-    )
+""".lstrip())  # noqa: E501
