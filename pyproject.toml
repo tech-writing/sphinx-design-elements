@@ -233,7 +233,6 @@ tasks.format = [
 ]
 tasks.lint = [
   { cmd = "ruff check ." },
-  { cmd = "black --check ." },
   { cmd = "validate-pyproject pyproject.toml" },
   { cmd = "mypy" },
 ]
